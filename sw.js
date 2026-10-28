@@ -1,11 +1,13 @@
 // Pure Mantra Service Worker - Mobile Cache & Offline Support
-const CACHE_NAME = 'pure-mantra-v1';
+const CACHE_NAME = 'pure-mantra-v2';
 const ASSETS_TO_CACHE = [
   './',
   './index.html',
   './styles.css',
   './app.js',
+  './assets.js',
   './logo.jpg',
+  './fssai-license.jpg',
   './fssai-license.png',
   './manifest.json'
 ];
@@ -13,7 +15,9 @@ const ASSETS_TO_CACHE = [
 self.addEventListener('install', (event) => {
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => {
-      return cache.addAll(ASSETS_TO_CACHE);
+      return Promise.allSettled(
+        ASSETS_TO_CACHE.map((url) => cache.add(url).catch(err => console.warn('Cache add failed for', url, err)))
+      );
     }).then(() => self.skipWaiting())
   );
 });
@@ -44,7 +48,7 @@ self.addEventListener('fetch', (event) => {
         return networkResponse;
       }).catch(() => {
         // Fallback for html pages
-        if (event.request.headers.get('accept').includes('text/html')) {
+        if (event.request.headers && event.request.headers.get('accept') && event.request.headers.get('accept').includes('text/html')) {
           return caches.match('./index.html');
         }
       });

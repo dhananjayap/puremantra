@@ -151,19 +151,13 @@ p {
   justify-content: center;
   transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.8s;
   overflow: hidden;
-  animation: autoDismissPreloader 0.6s ease 3.5s forwards;
-}
-
-@keyframes autoDismissPreloader {
-  0% { opacity: 1; visibility: visible; }
-  99% { opacity: 0; visibility: hidden; pointer-events: none; }
-  100% { opacity: 0; visibility: hidden; pointer-events: none; display: none; }
 }
 
 .site-preloader.fade-out {
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+  display: none !important;
 }
 
 .preloader-stage {
@@ -2860,7 +2854,7 @@ img {
 }
 
 #dockedMortarPot {
-  opacity: 0;
+  opacity: 1;
   transition: opacity 0.25s ease;
 }
 
@@ -3037,8 +3031,8 @@ img {
 
 /* Herbarium Workbench container that gradually appears */
 #labContentContainer {
-  opacity: 0;
-  transform: translateY(35px);
+  opacity: 1;
+  transform: translateY(0);
   transition: opacity 0.35s ease-out, transform 0.35s ease-out;
   will-change: opacity, transform;
 }

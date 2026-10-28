@@ -1122,7 +1122,7 @@ function openFssaiModal() {
 
       <div style="display: grid; grid-template-columns: 1fr 1.15fr; gap: 1.8rem; align-items: start; margin-bottom: 1.6rem;">
         <div style="background: #090D07; border-radius: var(--radius-sm); padding: 10px; text-align: center; border: 1.5px solid #C89F5A;">
-          <img src="fssai-license.png" alt="Pure Mantra Official FSSAI Registration Certificate" style="width: 100%; min-height: 250px; height: auto; border-radius: 4px; display: block; cursor: pointer; object-fit: contain;" onerror="if(window.PURE_MANTRA_ASSETS?.fssai){this.src=window.PURE_MANTRA_ASSETS.fssai;}else{this.src='fssai-license.jpg';}this.onerror=null;" onclick="if(window.PURE_MANTRA_ASSETS?.fssai){const w=window.open('');w.document.write('<title>FSSAI Registration Certificate - Pure Mantra</title><img src=\x22'+this.src+'\x22 style=\x22max-width:100%;margin:20px auto;display:block;\x22>');}else{window.open('fssai-license.png', '_blank');}">
+          <img src="fssai-license.jpg" alt="Pure Mantra Official FSSAI Registration Certificate" style="width: 100%; min-height: 250px; height: auto; border-radius: 4px; display: block; cursor: pointer; object-fit: contain;" onerror="if(window.PURE_MANTRA_ASSETS?.fssai){this.src=window.PURE_MANTRA_ASSETS.fssai;}this.onerror=null;" onclick="if(window.PURE_MANTRA_ASSETS?.fssai){const w=window.open('');w.document.write('<title>FSSAI Registration Certificate - Pure Mantra</title><img src=\x22'+this.src+'\x22 style=\x22max-width:100%;margin:20px auto;display:block;\x22>');}else{window.open('fssai-license.jpg', '_blank');}">
           <span style="font-size: 0.72rem; color: #f2ffb0; display: block; margin-top: 0.5rem; font-weight: 600;">Click photo to open full resolution certificate</span>
         </div>
 
@@ -1191,6 +1191,20 @@ function initMobileMenu() {
 function scrollToSection(sectionId) {
   const target = document.getElementById(sectionId);
   if (target) {
+    if (sectionId === "labSection") {
+      const labContent = document.getElementById("labContentContainer");
+      const dockedPot = document.getElementById("dockedMortarPot");
+      const vessel = document.getElementById("transitionVesselWrapper");
+      if (labContent) {
+        labContent.style.opacity = "1";
+        labContent.style.transform = "none";
+      }
+      if (dockedPot) dockedPot.style.opacity = "1";
+      if (vessel) {
+        vessel.style.opacity = "0";
+        vessel.style.pointerEvents = "none";
+      }
+    }
     target.scrollIntoView({ behavior: "smooth" });
   }
 }
@@ -1550,6 +1564,8 @@ function initBowlScrollTransition() {
   const targetSlot = document.getElementById("mortarVisualBox");
   const textOverlay = document.getElementById("portalTextOverlay");
   const labContent = document.getElementById("labContentContainer");
+  const labSection = document.getElementById("labSection");
+  const dockedPot = document.getElementById("dockedMortarPot");
 
   if (!portal || !vessel || !targetSlot) return;
 
@@ -1561,6 +1577,20 @@ function initBowlScrollTransition() {
     const portalHeight = portal.offsetHeight;
     const winHeight = window.innerHeight;
     const winWidth = window.innerWidth;
+    const labRect = labSection ? labSection.getBoundingClientRect() : null;
+
+    // Check if the user has reached or is viewing the lab section
+    if (labRect && labRect.top <= winHeight * 0.75) {
+      if (labContent) {
+        labContent.style.opacity = "1";
+        labContent.style.transform = "none";
+      }
+      if (dockedPot) dockedPot.style.opacity = "1";
+      vessel.style.opacity = "0";
+      vessel.style.pointerEvents = "none";
+      if (textOverlay) textOverlay.style.opacity = "0";
+      return;
+    }
 
     // Distance through the portal scroll track
     const scrolledPastTop = -portalRect.top;
@@ -1578,6 +1608,7 @@ function initBowlScrollTransition() {
         textOverlay.style.opacity = "1";
         textOverlay.style.transform = "translate(-50%, -50%) translateY(0)";
       }
+      if (dockedPot) dockedPot.style.opacity = "0";
       return;
     }
 
@@ -1605,14 +1636,13 @@ function initBowlScrollTransition() {
     // The bowl is HIDDEN until the user scrolls past this message.
     // -------------------------------------------------------------
     if (textOverlay) {
-      // Message is 100% visible at start, then fades out as user scrolls past (0.18 to 0.36)
       const textAlpha = Math.max(0, Math.min(1, 1 - (progress - 0.16) / 0.18));
       textOverlay.style.opacity = textAlpha;
       textOverlay.style.transform = `translate(-50%, -50%) translateY(${-progress * 45}px)`;
     }
 
     // -------------------------------------------------------------
-    // PHASE 2 & 3: BOWL APPEARS, SCALES DOWN & GLIDES (0.26 to 0.88)
+    // PHASE 2 & 3: BOWL APPEARS, SCALES DOWN & GLIDES (0.24 to 0.88)
     // After scrolling past the message, the big white shade bowl appears,
     // then slowly decreases in size and glides to its workbench place.
     // -------------------------------------------------------------
@@ -1621,20 +1651,16 @@ function initBowlScrollTransition() {
     let currentY = startY;
     let currentScale = startScale;
 
-    if (progress < 0.24) {
-      // Before scrolling the message part: bowl is hidden!
+    if (progress < 0.22) {
       vesselOpacity = 0;
-    } else if (progress < 0.40) {
-      // After message part: bowl gracefully blooms into view at full large scale!
-      vesselOpacity = (progress - 0.24) / 0.16;
+    } else if (progress < 0.38) {
+      vesselOpacity = (progress - 0.22) / 0.16;
       currentX = startX;
       currentY = startY;
       currentScale = startScale;
     } else {
-      // Bowl is fully visible: now slowly decreases in size and moves to target slot!
       vesselOpacity = 1;
-      const moveProgress = Math.min(1, (progress - 0.40) / 0.46); // 0.40 to 0.86
-      // Smoothstep easing for organic deceleration into the workbench
+      const moveProgress = Math.min(1, (progress - 0.38) / 0.48);
       const ease = moveProgress * moveProgress * (3 - 2 * moveProgress);
 
       currentX = startX + (finalTargetX - startX) * ease;
@@ -1643,17 +1669,16 @@ function initBowlScrollTransition() {
     }
 
     // -------------------------------------------------------------
-    // PHASE 4: OTHER SECTIONS GRADUALLY APPEAR & DOCKING (0.70 to 1.0)
+    // PHASE 4: OTHER SECTIONS GRADUALLY APPEAR & DOCKING (0.62 to 1.0)
     // As the bowl settles into place, the workbench sections fade in!
     // -------------------------------------------------------------
     if (labContent) {
-      const labAlpha = Math.max(0, Math.min(1, (progress - 0.68) / 0.26));
+      const labAlpha = Math.max(0, Math.min(1, (progress - 0.62) / 0.28));
       labContent.style.opacity = labAlpha;
       labContent.style.transform = `translateY(${(1 - labAlpha) * 35}px)`;
     }
 
-    const dockedPot = document.getElementById("dockedMortarPot");
-    if (progress >= 0.95) {
+    if (progress >= 0.88) {
       // Seamlessly handoff to in-flow docked mortar pot on workbench
       if (dockedPot) dockedPot.style.opacity = "1";
       vessel.style.opacity = "0";
@@ -1670,6 +1695,11 @@ function initBowlScrollTransition() {
     if (portalRect.bottom + (targetRect.height * 2) < 0) {
       vessel.style.opacity = "0";
       vessel.style.pointerEvents = "none";
+      if (dockedPot) dockedPot.style.opacity = "1";
+      if (labContent) {
+        labContent.style.opacity = "1";
+        labContent.style.transform = "none";
+      }
     }
   }
 
@@ -1729,7 +1759,10 @@ function initSitePreloader() {
 
     // Clean up when animation finishes
     setTimeout(() => {
-      preloader.style.display = "none";
+      preloader.style.setProperty("display", "none", "important");
+      if (preloader.parentNode) {
+        preloader.remove();
+      }
     }, 1100);
   }
 
@@ -1745,10 +1778,14 @@ function initSitePreloader() {
     });
   }
 
-  // Fallback trigger
+  // Fallback trigger (ensures preloader never blocks page under any condition)
   setTimeout(() => {
-    if (!preloader.classList.contains("fade-out")) {
-      runOpeningTransition();
+    if (preloader && preloader.parentNode) {
+      preloader.classList.add("fade-out");
+      setTimeout(() => {
+        preloader.style.setProperty("display", "none", "important");
+        if (preloader.parentNode) preloader.remove();
+      }, 400);
     }
   }, 2500);
 }
