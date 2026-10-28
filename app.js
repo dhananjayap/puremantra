@@ -1417,7 +1417,7 @@ function updateInfusionUI() {
   if (!statusText) return;
 
   if (selectedBotanicalHerbs.length < 3) {
-    statusText.innerHTML = `<strong>Step 1:</strong> Select 3 botanicals from the rack on the left to prepare your compounding formula.`;
+    statusText.innerHTML = `<strong>Step 1:</strong> Select 3 botanicals from the botanical rack to prepare your compounding formula.`;
   } else if (grindProgress === 0) {
     statusText.innerHTML = `<strong>Ready:</strong> Click <em>"Pound & Grind Botanicals"</em> or stir your cursor inside the stone Khalva!`;
   } else if (grindProgress < 30) {
@@ -1568,6 +1568,17 @@ function initBowlScrollTransition() {
   const dockedPot = document.getElementById("dockedMortarPot");
 
   if (!portal || !vessel || !targetSlot) return;
+
+  // On mobile viewports (<= 768px), keep the lab workbench 100% visible and active
+  if (window.innerWidth <= 768) {
+    if (labContent) {
+      labContent.style.opacity = "1";
+      labContent.style.transform = "none";
+    }
+    if (dockedPot) dockedPot.style.opacity = "1";
+    if (vessel) vessel.style.display = "none";
+    return;
+  }
 
   let isTicking = false;
 
