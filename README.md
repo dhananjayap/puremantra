@@ -7,52 +7,43 @@
 ## 🌿 Overview
 This website for **Pure Mantra Ayurvedic Cosmetology** is crafted following your exact brand, aesthetic, and architectural specifications. It embodies classical Kerala Ayurvedic traditions, whole-plant extractions, clean-label transparency, and the historic martial lineage of Puthiyara.
 
-### 🎨 Color Palette Implementation
-- **PRIMARY COLOR: `#EEDDC9`** — Warm coffee cream / luxury parchment base across the entire web application.
-- **Olive Green**: `#1E2918`, `#2C3B24`, `#3E5233` (deep forest & botanical olive tones for contrasting sections, cards, and typography).
-- **Black**: `#0D100C`, `#141812` (carbon black and matte espresso for buttons, sharp serifs, and footer).
-- **Luminous Herbal Highlight: `#f2ffb0`** (glowing pale chartreuse blossom for badges, simmering kettle aura, active indicators, and accents).
-- **Light Coffee Accents**: `#EEDDC9` (primary), `#DFCCB5`, `#F9F4EE`, `#8C7056`.
+### 🎨 Color Palette Implementation (Cream Milk Aesthetic)
+- **Primary Canvas**: `#FAF6F0` (Pure Cream Milk) & `#FFFFFF` (Porcelain Milk Cards).
+- **Headings & Primary Text**: `#172615` & `#1D1916` (Deep Botanical Forest Olive & Rich Espresso for ultra-clear readability).
+- **Kerala Temple Gold**: `#C89F5A`, `#B8883B`, `#9A7029` (Outlines, emblems, borders, and accents).
+- **Luminous Herbal Highlight**: `#f2ffb0` (Vibrant chartreuse lime accents on dark olive badges and cards).
+- **High-Contrast Button System**:
+  - **Primary CTA**: Deep Forest Olive (`#1B2917`), Cream Milk text (`#FAF6F0`), Antique Gold border (`1.5px solid #C89F5A`).
+  - **Secondary CTA**: Crisp White (`#FFFFFF`), Deep Forest Olive text (`#1B2917`), Solid Temple Gold border (`2px solid #C89F5A`).
 
 ---
 
 ## 📍 Sole Authorized Physical Location
 - **Single Physical Store & Dispensary**: **Puthiyara, Kozhikode (Calicut), Kerala 673004, India** (on the historic grounds of Hindustan Kalari Sangham).
 - **Official Google Maps Navigation Link**: [https://maps.app.goo.gl/14FxJsMqcdhjpaDq7](https://maps.app.goo.gl/14FxJsMqcdhjpaDq7)
+- **Official Instagram**: [https://www.instagram.com/puremantra_ayurveda/](https://www.instagram.com/puremantra_ayurveda/)
 - *Pure Mantra does not distribute to supermarkets, malls, or multi-brand pharmacies to protect small-batch Sneha Kalpana efficacy and prevent counterfeit or aged stock.*
 
 ---
 
-## 🌟 Interactive Product Design Features
-- **3D Card Tilt Simulation**: Moving the mouse over any product card creates a smooth 3D perspective tilt.
-- **Interactive Angle & Visual Switcher**: Each product card allows instant switching between:
-  - *Bottle Angle* (front flacon presentation)
-  - *Herb Blend* (botanical active inspection)
-  - *Texture* (dropper & elixir consistency)
-- **Interactive Size Selector**: Dynamic volume toggles (e.g. 30 ml vs 50 ml, 100 ml vs 200 ml, 150 g vs 300 g) with live price updates.
-- **Sample Visual Indicator**: Tagged with *"Interactive Sample Visual • Real Photo Ready"* so you can drop your final photographed packshots into the visual placeholders seamlessly in the future.
-- **Quick View Modal**: In-depth inspection of key botanicals, aroma notes, Dinacharya rituals, and direct WhatsApp concierge ordering.
-
----
-
-## 🏛️ Key Sections
-1. **Homepage Hero**: Headline *"Where Everyday Routines Become Quiet Rituals of Rejuvenation."* with trust badges and simmering copper Uruli animation.
-2. **The 4 Core Pillars**:
-   - *Pillar 1: Mukha & Kaya (Face & Body Care)*
-   - *Pillar 2: Kesha (Traditional Kerala Hair Care)*
-   - *Pillar 3: Rasayana (Internal Wellness & Immunity)*
-   - *Pillar 4: Ritucharya (Seasonal Regimens)*
-3. **The Making (Sneha Kalpana)**: Copper Kwath simmering, 72-hour slow heat, Madhyama Paka, and dated batch compounding in Puthiyara.
-4. **FSSAI Statutory Accreditation**:
-   - Features the framed certificate photo (`fssai-license.png`) with zoom modal.
-   - **FSSAI Reg. No: `21323242000345`** (Commissionerate of Food Safety, Government of Kerala).
-   - The 4 Core Values: *Safe Ingredients*, *Traditional Wisdom*, *With Care*, *For a Healthier You*.
-   - Slogan: *"Pure | Traditional | Effective | Made in Kerala"*.
-5. **Karkidaka Kanji Monsoon Kit**: 7-Day medicinal porridge reset with Njavara grains, Dashapushpam/Trikatu Kizhi, and interactive brewing guide modal.
-6. **Puthiyara Martial Heritage**: 75-year-old historic synergy with Hindustan Kalari Sangham, Puthiyara.
-7. **Sole Physical Store & Clinic**: Interactive Puthiyara map with pulsing pin, directions, and hours.
-8. **WhatsApp Concierge & UAE (Dubai) Air Dispatch**: Pre-populated ordering and inquiries.
-9. **Persistent Shopping Bag Drawer & Checkout**: Free domestic shipping over ₹999 and free in-person pickup at the Puthiyara store.
+## 💎 Key Enhancements & Resilience Features
+1. **100% Image Reliability (Embedded Asset Watchdog)**:
+   - Includes `assets.js` with embedded Base64 fallbacks for `logo.jpg` and `fssai-license.png`.
+   - Automatic `onerror` handlers ensure the brand logo and statutory license NEVER fail to render across all hosts and offline environments.
+2. **Centered Footer Brand Crest**:
+   - Grand centered circular emblem (84px diameter) with gold double-ring boundary border and soft botanical glow.
+   - Centered typography, botanical flourish divider (`❖`), official Kozhikode Puthiyara note, and centered Instagram and FSSAI action pills.
+   - Followed by 3 balanced navigation columns.
+3. **Optimized Contrast & Legibility**:
+   - Resolved all white-on-white and light-shaded button issues across FSSAI Accreditation, Seasonal Karkidaka Kanji, and Product Catalog.
+4. **Interactive 360° Product Rotation**:
+   - Cursor movement on desktop spins products 360°; touch swipe on mobile devices rotates each formulation fluidly.
+5. **Interactive Corner: Botanical Compounding Lab**:
+   - Step-by-step raw botanical selection, interactive stone Khalva grinding, and custom formulation unveiling.
+6. **Scroll-Driven Stone Vessel Transition**:
+   - Cinematic scroll guide moving the sacred white compounding vessel into the workbench dock.
+7. **Mobile App & PWA Readiness (Android & iOS)**:
+   - Web App Manifest (`manifest.json`), service worker (`sw.js`), and gentle Add-to-Home-Screen prompt.
 
 ---
 

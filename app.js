@@ -290,18 +290,42 @@ let cart = JSON.parse(localStorage.getItem("pure_mantra_cart") || "[]");
 let currentPillarFilter = "all";
 let currentConcernFilter = "all";
 
+// --- Asset Watchdog: Guarantees 100% Logo and License Visibility ---
+function initAssetGuards() {
+  function verifyImage(img, fallbackKey) {
+    if (!img) return;
+    img.addEventListener("error", function() {
+      if (window.PURE_MANTRA_ASSETS && window.PURE_MANTRA_ASSETS[fallbackKey]) {
+        this.src = window.PURE_MANTRA_ASSETS[fallbackKey];
+      }
+    });
+    if (img.complete && img.naturalWidth === 0 && window.PURE_MANTRA_ASSETS?.[fallbackKey]) {
+      img.src = window.PURE_MANTRA_ASSETS[fallbackKey];
+    }
+  }
+
+  document.querySelectorAll('img[src*="logo"], .brand-logo-frame img, .preloader-emblem-img, .footer-crest-logo-frame img, .mobile-pwa-pill-logo, .main-menu-logo-mini img').forEach(img => {
+    verifyImage(img, "logo");
+  });
+
+  document.querySelectorAll('img[src*="fssai"], .fssai-cert-img').forEach(img => {
+    verifyImage(img, "fssai");
+  });
+}
+
 // --- Initialization ---
 document.addEventListener("DOMContentLoaded", () => {
-  renderProducts();
-  updateCartUI();
-  initFilterListeners();
-  initCraftsmanshipReel();
-  initQuizLogic();
-  initMobileMenu();
-  initBotanicalLab();
-  initBowlScrollTransition();
-  initSitePreloader();
-  initPwaAndMobileApp();
+  try { initAssetGuards(); } catch(e) { console.error("Asset guard error:", e); }
+  try { initSitePreloader(); } catch(e) { console.error("Preloader error:", e); }
+  try { renderProducts(); } catch(e) { console.error("Product render error:", e); }
+  try { updateCartUI(); } catch(e) { console.error("Cart UI error:", e); }
+  try { initFilterListeners(); } catch(e) { console.error("Filter listeners error:", e); }
+  try { initCraftsmanshipReel(); } catch(e) { console.error("Reel error:", e); }
+  try { initQuizLogic(); } catch(e) { console.error("Quiz logic error:", e); }
+  try { initMobileMenu(); } catch(e) { console.error("Mobile menu error:", e); }
+  try { initBotanicalLab(); } catch(e) { console.error("Botanical lab error:", e); }
+  try { initBowlScrollTransition(); } catch(e) { console.error("Bowl scroll error:", e); }
+  try { initPwaAndMobileApp(); } catch(e) { console.error("PWA init error:", e); }
 });
 
 // --- Product Rendering with 360-Degree Turn Interaction ---
@@ -653,34 +677,34 @@ function openProductModal(productId) {
       </div>
 
       <div>
-        <div style="font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--color-gold-accent); margin-bottom: 0.3rem; font-weight: 700;">
+        <div style="font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--color-gold-bright); margin-bottom: 0.3rem; font-weight: 700;">
           ${item.pillarLabel}
         </div>
-        <h2 style="font-size: 2rem; margin-bottom: 0.3rem; color: var(--color-cream-pure);" class="font-serif">${item.name}</h2>
-        <div style="font-size: 0.95rem; color: #BDB2A5; margin-bottom: 1.2rem;">${item.subName}</div>
+        <h2 style="font-size: 2rem; margin-bottom: 0.3rem; color: #FFFDF9;" class="font-serif">${item.name}</h2>
+        <div style="font-size: 0.95rem; color: #EDE4D8; margin-bottom: 1.2rem;">${item.subName}</div>
 
-        <div style="font-family: var(--font-serif); font-size: 1.9rem; font-weight: 700; color: var(--color-accent-lime); margin-bottom: 1.2rem;">
-          ₹${item.price.toLocaleString("en-IN")} <span style="font-size: 0.85rem; font-family: var(--font-sans); color: #9E9385;">(${item.selectedSize})</span>
+        <div style="font-family: var(--font-serif); font-size: 1.9rem; font-weight: 700; color: #f2ffb0; margin-bottom: 1.2rem;">
+          ₹${item.price.toLocaleString("en-IN")} <span style="font-size: 0.85rem; font-family: var(--font-sans); color: #C8BEB3;">(${item.selectedSize})</span>
         </div>
 
-        <p style="font-size: 0.94rem; color: #D3C9BD; line-height: 1.65; margin-bottom: 1.4rem;">
+        <p style="font-size: 0.94rem; color: #EDE4D8; line-height: 1.65; margin-bottom: 1.4rem;">
           ${item.shortDesc}
         </p>
 
-        <div style="background: rgba(9, 13, 7, 0.7); border: 1px solid rgba(47, 66, 41, 0.6); border-radius: var(--radius-sm); padding: 1rem; margin-bottom: 1.1rem; font-size: 0.84rem;">
-          <strong style="color: var(--color-accent-lime); display: block; margin-bottom: 0.2rem;">Botanical Formulation:</strong>
-          <span style="color: #C8BEB3;">${item.ingredients}</span>
+        <div style="background: rgba(9, 13, 7, 0.7); border: 1.5px solid rgba(200, 159, 90, 0.4); border-radius: var(--radius-sm); padding: 1rem; margin-bottom: 1.1rem; font-size: 0.84rem;">
+          <strong style="color: #f2ffb0; display: block; margin-bottom: 0.2rem;">Botanical Formulation:</strong>
+          <span style="color: #EDE4D8;">${item.ingredients}</span>
         </div>
 
-        <div style="background: rgba(34, 48, 30, 0.4); border-left: 3px solid var(--color-accent-lime); padding: 0.7rem 1rem; margin-bottom: 1.1rem; font-size: 0.82rem; color: #C8BEB3;">
-          <strong style="color: var(--color-cream-pure);">Dinacharya Ritual:</strong> ${item.ritual}
+        <div style="background: rgba(34, 48, 30, 0.4); border-left: 3px solid #C89F5A; padding: 0.7rem 1rem; margin-bottom: 1.1rem; font-size: 0.82rem; color: #EDE4D8;">
+          <strong style="color: #FFFDF9;">Dinacharya Ritual:</strong> ${item.ritual}
         </div>
 
-        <div style="background: rgba(9, 13, 7, 0.8); border: 1px dashed var(--color-accent-lime-border); border-radius: var(--radius-sm); padding: 0.75rem 1rem; margin-bottom: 1.6rem; font-size: 0.82rem;">
-          <strong style="color: var(--color-accent-lime); display: block; margin-bottom: 0.2rem;">★ Sole Physical Sales Point:</strong>
-          <span style="color: #C8BEB3;">
+        <div style="background: rgba(9, 13, 7, 0.8); border: 1.5px dashed rgba(200, 159, 90, 0.5); border-radius: var(--radius-sm); padding: 0.75rem 1rem; margin-bottom: 1.6rem; font-size: 0.82rem;">
+          <strong style="color: #f2ffb0; display: block; margin-bottom: 0.2rem;">★ Sole Physical Sales Point:</strong>
+          <span style="color: #EDE4D8;">
             Sold in person exclusively at our Puthiyara location (Kozhikode, Kerala).
-            <a href="https://maps.app.goo.gl/14FxJsMqcdhjpaDq7" target="_blank" rel="noopener noreferrer" style="color: var(--color-accent-lime); font-weight: 700; text-decoration: underline; margin-left: 0.3rem;">
+            <a href="https://maps.app.goo.gl/14FxJsMqcdhjpaDq7" target="_blank" rel="noopener noreferrer" style="color: #f2ffb0; font-weight: 700; text-decoration: underline; margin-left: 0.3rem;">
               Open Google Maps &rarr;
             </a>
           </span>
@@ -1090,47 +1114,47 @@ function openFssaiModal() {
 
   content.innerHTML = `
     <div>
-      <span style="font-size: 0.75rem; font-weight: 700; color: var(--color-gold-accent); text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 0.4rem;">Statutory Compliance &bull; Government of Kerala</span>
-      <h2 style="font-size: 1.95rem; color: var(--color-cream-pure); margin-bottom: 0.4rem;" class="font-serif">Official FSSAI Registration Certificate</h2>
-      <p style="font-size: 0.9rem; color: #D3C9BD; line-height: 1.6; margin-bottom: 1.5rem;">
+      <span style="font-size: 0.75rem; font-weight: 700; color: #C89F5A; text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 0.4rem;">Statutory Compliance &bull; Government of Kerala</span>
+      <h2 style="font-size: 1.95rem; color: #FFFDF9; margin-bottom: 0.4rem;" class="font-serif">Official FSSAI Registration Certificate</h2>
+      <p style="font-size: 0.9rem; color: #EDE4D8; line-height: 1.6; margin-bottom: 1.5rem;">
         Food Safety and Standards Authority of India &bull; Registration Certificate under FSS Act, 2006 (Commissionerate of Food Safety, Kerala).
       </p>
 
       <div style="display: grid; grid-template-columns: 1fr 1.15fr; gap: 1.8rem; align-items: start; margin-bottom: 1.6rem;">
-        <div style="background: #090D07; border-radius: var(--radius-sm); padding: 10px; text-align: center; border: 1px solid rgba(47, 66, 41, 0.6);">
-          <img src="fssai-license.png" alt="Pure Mantra Official FSSAI Registration Certificate" style="width: 100%; height: auto; border-radius: 4px; display: block; cursor: pointer;" onclick="window.open('fssai-license.png', '_blank')">
-          <span style="font-size: 0.72rem; color: var(--color-accent-lime); display: block; margin-top: 0.5rem;">Click photo to open full resolution certificate</span>
+        <div style="background: #090D07; border-radius: var(--radius-sm); padding: 10px; text-align: center; border: 1.5px solid #C89F5A;">
+          <img src="fssai-license.png" alt="Pure Mantra Official FSSAI Registration Certificate" style="width: 100%; min-height: 250px; height: auto; border-radius: 4px; display: block; cursor: pointer; object-fit: contain;" onerror="if(window.PURE_MANTRA_ASSETS?.fssai){this.src=window.PURE_MANTRA_ASSETS.fssai;}else{this.src='fssai-license.jpg';}this.onerror=null;" onclick="if(window.PURE_MANTRA_ASSETS?.fssai){const w=window.open('');w.document.write('<title>FSSAI Registration Certificate - Pure Mantra</title><img src=\x22'+this.src+'\x22 style=\x22max-width:100%;margin:20px auto;display:block;\x22>');}else{window.open('fssai-license.png', '_blank');}">
+          <span style="font-size: 0.72rem; color: #f2ffb0; display: block; margin-top: 0.5rem; font-weight: 600;">Click photo to open full resolution certificate</span>
         </div>
 
         <div>
-          <div style="background: rgba(9, 13, 7, 0.75); border: 1px solid rgba(47, 66, 41, 0.6); border-radius: var(--radius-sm); padding: 1.3rem; font-size: 0.84rem;">
+          <div style="background: rgba(9, 13, 7, 0.75); border: 1.5px solid rgba(200, 159, 90, 0.4); border-radius: var(--radius-sm); padding: 1.3rem; font-size: 0.84rem;">
             <div style="margin-bottom: 0.9rem;">
-              <span style="color: #9E9385; display: block; font-size: 0.72rem; text-transform: uppercase; font-weight: 700;">Official Registration Number:</span>
-              <strong style="color: var(--color-accent-lime); font-family: monospace; font-size: 1.25rem; letter-spacing: 0.05em;">21323242000345</strong>
+              <span style="color: #E0B872; display: block; font-size: 0.72rem; text-transform: uppercase; font-weight: 700;">Official Registration Number:</span>
+              <strong style="color: #f2ffb0; font-family: monospace; font-size: 1.25rem; letter-spacing: 0.05em; text-shadow: 0 0 10px rgba(242,255,176,0.3);">21323242000345</strong>
             </div>
 
             <div style="margin-bottom: 0.9rem;">
-              <span style="color: #9E9385; display: block; font-size: 0.72rem; text-transform: uppercase; font-weight: 700;">Location &amp; Operating Base:</span>
-              <strong style="color: var(--color-cream-pure);">Puthiyara, Kozhikode, Kerala, India</strong>
+              <span style="color: #C8BEB3; display: block; font-size: 0.72rem; text-transform: uppercase; font-weight: 700;">Location &amp; Operating Base:</span>
+              <strong style="color: #FFFDF9;">Puthiyara, Kozhikode, Kerala, India</strong>
             </div>
 
             <div style="margin-bottom: 0.9rem;">
-              <span style="color: #9E9385; display: block; font-size: 0.72rem; text-transform: uppercase; font-weight: 700;">Kind of Business:</span>
-              <span style="color: var(--color-cream-soft); font-weight: 600;">Food Vending Establishment &amp; Artisanal Formulations</span>
+              <span style="color: #C8BEB3; display: block; font-size: 0.72rem; text-transform: uppercase; font-weight: 700;">Kind of Business:</span>
+              <span style="color: #EDE4D8; font-weight: 600;">Food Vending Establishment &amp; Artisanal Formulations</span>
             </div>
 
             <div>
-              <span style="color: #9E9385; display: block; font-size: 0.72rem; text-transform: uppercase; font-weight: 700;">Statutory Scope:</span>
-              <span style="color: var(--color-cream-soft);">Internal Organic Wellness Foods &amp; External Cosmetic Blends</span>
+              <span style="color: #C8BEB3; display: block; font-size: 0.72rem; text-transform: uppercase; font-weight: 700;">Statutory Scope:</span>
+              <span style="color: #EDE4D8;">Internal Organic Wellness Foods &amp; External Cosmetic Blends</span>
             </div>
           </div>
         </div>
       </div>
 
       <div style="display: flex; justify-content: space-between; align-items: center; gap: 1rem; flex-wrap: wrap;">
-        <span style="font-size: 0.76rem; color: #9E9385;">Verified Food Safety Standards compliance under FSS Act, 2006.</span>
+        <span style="font-size: 0.76rem; color: #C8BEB3;">Verified Food Safety Standards compliance under FSS Act, 2006.</span>
         <div style="display: flex; gap: 0.8rem;">
-          <a href="fssai-license.png" target="_blank" class="btn-secondary" style="text-decoration: none; font-size: 0.84rem; padding: 0.65rem 1.2rem;">Open Full Image</a>
+          <button class="btn-secondary" onclick="if(window.PURE_MANTRA_ASSETS?.fssai){const w=window.open('');w.document.write('<title>FSSAI Registration Certificate - Pure Mantra</title><img src=\x22'+window.PURE_MANTRA_ASSETS.fssai+'\x22 style=\x22max-width:100%;margin:20px auto;display:block;\x22>');}else{window.open('fssai-license.png', '_blank');}" style="font-size: 0.84rem; padding: 0.65rem 1.2rem;">Open Full Image</button>
           <button class="btn-primary" onclick="closeFssaiModal()" style="font-size: 0.84rem; padding: 0.65rem 1.2rem;">Close Certificate</button>
         </div>
       </div>
