@@ -1839,6 +1839,19 @@ function initPwaAndMobileApp() {
   const pwaPill = document.getElementById("mobilePwaPill");
   if (!pwaPill) return;
 
+  // Never display mobile install pill on desktop viewport (> 768px)
+  if (window.innerWidth > 768) {
+    pwaPill.style.display = "none";
+    return;
+  }
+
+  window.addEventListener("resize", () => {
+    if (window.innerWidth > 768 && pwaPill) {
+      pwaPill.classList.remove("show");
+      pwaPill.style.display = "none";
+    }
+  });
+
   // Check if dismissed before in sessionStorage
   if (sessionStorage.getItem("pure_mantra_pwa_dismissed")) {
     return;
@@ -1858,7 +1871,10 @@ function initPwaAndMobileApp() {
     e.preventDefault();
     deferredPwaPrompt = e;
     setTimeout(() => {
-      pwaPill.classList.add("show");
+      if (window.innerWidth <= 768) {
+        pwaPill.style.display = "";
+        pwaPill.classList.add("show");
+      }
     }, 2500);
   });
 
@@ -1874,7 +1890,10 @@ function initPwaAndMobileApp() {
       };
     }
     setTimeout(() => {
-      pwaPill.classList.add("show");
+      if (window.innerWidth <= 768) {
+        pwaPill.style.display = "";
+        pwaPill.classList.add("show");
+      }
     }, 3500);
   }
 }
@@ -1896,6 +1915,7 @@ function dismissPwaBanner() {
   const pwaPill = document.getElementById("mobilePwaPill");
   if (pwaPill) {
     pwaPill.classList.remove("show");
+    pwaPill.style.display = "none";
     sessionStorage.setItem("pure_mantra_pwa_dismissed", "true");
   }
 }

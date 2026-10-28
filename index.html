@@ -1352,10 +1352,10 @@
     </div>
   </aside>
 
-  <!-- Gentle Mobile Install / Add-to-Home-Screen Pill -->
-  <div class="mobile-pwa-pill" id="mobilePwaPill">
+  <!-- Gentle Mobile Install / Add-to-Home-Screen Pill (Mobile Viewport Only: strictly hidden on Desktop) -->
+  <div class="mobile-pwa-pill" id="mobilePwaPill" style="display: none;" aria-hidden="true">
     <div class="mobile-pwa-pill-inner">
-      <img src="logo.jpg" alt="Pure Mantra App" class="mobile-pwa-pill-logo" onerror="if(window.PURE_MANTRA_ASSETS?.logo){this.src=window.PURE_MANTRA_ASSETS.logo;}this.onerror=null;">
+      <img src="logo.jpg" alt="Pure Mantra App" class="mobile-pwa-pill-logo" width="32" height="32" style="width: 32px; height: 32px; max-width: 32px; max-height: 32px; object-fit: cover; border-radius: 50%;" onerror="if(window.PURE_MANTRA_ASSETS?.logo){this.src=window.PURE_MANTRA_ASSETS.logo;}this.onerror=null;">
       <div class="mobile-pwa-pill-text">
         <strong>Install Pure Mantra App</strong>
         <span id="pwaInstructionText">Instant access &amp; offline herbal apothecary</span>
