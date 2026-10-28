@@ -10,47 +10,69 @@
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
 
 :root {
-  /* Primary Olive Green Nature Palette */
-  --color-olive-darkest: #0E140C;
-  --color-olive-dark: #162013;
-  --color-olive-primary: #22301E;
-  --color-olive-mid: #2F4229;
-  --color-olive-light: #465E3E;
-  --color-olive-sage: #6B8760;
+  /* ===================================================================
+     PURE MANTRA DESIGN SYSTEM: LUXURY CREAM MILK & BOTANICAL OLIVE
+     Primary Canvas: Cream Milk (Hex #FAF6F0 / #FFFDF9 / #F5EFE6)
+     =================================================================== */
+  /* Main Cream Milk Palette (Primary Website Canvas) */
+  --color-cream-milk-canvas: #FAF6F0;      /* The pure milk cream primary background */
+  --color-cream-milk-light:  #FFFDF9;      /* Porcelain white milk for cards & content */
+  --color-cream-milk-subtle: #F4EFE6;      /* Milk parchment for alternate section tints */
+  --color-cream-milk-deep:   #EDE4D8;      /* Warm latte cream for borders & dividers */
+  --color-cream-milk-card:   #FFFFFF;      /* Pure white card backgrounds */
 
-  /* Logo Golden Cream Palette */
-  --color-cream-pure: #FAF6F0;
-  --color-cream-soft: #F4EDE2;
-  --color-cream-base: #EEDDC9;
-  --color-cream-dark: #DEC7AD;
-  --color-gold-accent: #C89F5A;
-  --color-gold-deep: #A77C38;
+  /* Deep Botanical Forest Olive (Headings, Branding & Primary Contrast) */
+  --color-olive-darkest:     #121C10;      /* Deepest night forest olive */
+  --color-olive-dark:        #1A2817;      /* Primary heading & text olive */
+  --color-olive-primary:     #24381F;      /* Regal olive buttons & active states */
+  --color-olive-mid:         #374F2F;      /* Medium olive for badges & borders */
+  --color-olive-sage:        #5B7751;      /* Soft sage olive for subtitles */
+  --color-olive-light:       #819B76;
 
-  /* Luminous Herbal Highlight */
-  --color-accent-lime: #f2ffb0;
-  --color-accent-lime-dim: rgba(242, 255, 176, 0.18);
-  --color-accent-lime-border: rgba(242, 255, 176, 0.4);
+  /* Typography Colors (High Contrast on Cream Milk) */
+  --color-text-primary:      #1D1916;      /* Ultra-clear, deep espresso-charcoal text */
+  --color-text-secondary:    #554E45;      /* Warm roasted hazelnut secondary text */
+  --color-text-muted:        #7D7366;      /* Muted footnotes & descriptions */
+  --color-heading-serif:     #172615;      /* Deep botanical forest olive for titles */
+
+  /* Legacy variable mappings remapped for Cream Milk Canvas */
+  --color-cream-pure:        #172615;      /* Headings formerly cream now deep forest olive! */
+  --color-cream-soft:        #2E2721;      /* Formerly light cream text now crisp readable dark! */
+  --color-cream-base:        #FAF6F0;
+  --color-cream-dark:        #554E45;
+
+  /* Warm Antique Kerala Temple Gold (Outlines, Emblems & Accents) */
+  --color-gold-accent:       #B8883B;      /* Rich temple gold */
+  --color-gold-deep:         #9A7029;      /* Deep antique gold */
+  --color-gold-bright:       #C89F5A;      /* Bright antique gold */
+  --color-gold-subtle:       rgba(184, 136, 59, 0.16);
+  --color-gold-border:       rgba(184, 136, 59, 0.35);
+
+  /* Luminous Herbal Highlight (Requested Hex #f2ffb0) */
+  --color-accent-lime:       #f2ffb0;
+  --color-accent-lime-dim:   rgba(242, 255, 176, 0.25);
+  --color-accent-lime-border:rgba(242, 255, 176, 0.5);
 
   /* Deep Black */
-  --color-black-pure: #090D07;
-  --color-black-card: #131A10;
+  --color-black-pure:        #0C130A;
+  --color-black-card:        #FFFFFF;      /* Cards become crisp milk porcelain */
 
   /* Theme Card Fallbacks */
-  --color-primary-base: #162013;
-  --color-primary-card: #131A10;
-  --color-primary-border: rgba(47, 66, 41, 0.6);
-  --color-primary-light: rgba(22, 32, 19, 0.85);
-  --color-coffee-roast: #C89F5A;
+  --color-primary-base:      #FAF6F0;
+  --color-primary-card:      #FFFFFF;
+  --color-primary-border:    rgba(184, 136, 59, 0.25);
+  --color-primary-light:     #F5EFE6;
+  --color-coffee-roast:      #B8883B;
 
   /* Typography */
   --font-serif: 'Cormorant Garamond', Georgia, serif;
   --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 
-  /* Elevation */
-  --shadow-sm: 0 4px 12px rgba(9, 13, 7, 0.25);
-  --shadow-md: 0 10px 30px rgba(9, 13, 7, 0.4);
-  --shadow-lg: 0 20px 50px rgba(9, 13, 7, 0.55);
-  --shadow-glow: 0 0 25px rgba(242, 255, 176, 0.25);
+  /* Elevation tuned for light cream backgrounds */
+  --shadow-sm: 0 2px 10px rgba(45, 35, 20, 0.05);
+  --shadow-md: 0 8px 25px rgba(45, 35, 20, 0.08);
+  --shadow-lg: 0 16px 45px rgba(45, 35, 20, 0.12);
+  --shadow-glow: 0 0 25px rgba(200, 159, 90, 0.2);
 
   --radius-sm: 8px;
   --radius-md: 16px;
@@ -61,12 +83,11 @@
   --transition-smooth: 0.35s cubic-bezier(0.16, 1, 0.3, 1);
   --transition-spin: 1.2s cubic-bezier(0.25, 1, 0.5, 1);
 
-  /* Mobile Safe Area Insets (Android Gestures & iOS Notch/Dynamic Island) */
+  /* Mobile Safe Area Insets */
   --sat: env(safe-area-inset-top, 0px);
   --sab: env(safe-area-inset-bottom, 0px);
   --sal: env(safe-area-inset-left, 0px);
   --sar: env(safe-area-inset-right, 0px);
-  --mobile-nav-height: 64px;
 }
 
 *, *::before, *::after {
@@ -84,8 +105,8 @@ html {
 
 body {
   font-family: var(--font-sans);
-  background-color: var(--color-olive-darkest);
-  color: var(--color-cream-soft);
+  background-color: var(--color-cream-milk-canvas);
+  color: var(--color-text-primary);
   line-height: 1.65;
   overflow-x: hidden;
   position: relative;
@@ -93,15 +114,15 @@ body {
   touch-action: manipulation;
 }
 
-/* Organic Nature Texture Background */
+/* Organic Warm Milk Texture Background */
 body::before {
   content: "";
   position: fixed;
   inset: 0;
   background-image: 
-    radial-gradient(circle at 12% 18%, rgba(47, 66, 41, 0.35) 0%, transparent 50%),
-    radial-gradient(circle at 88% 65%, rgba(200, 159, 90, 0.08) 0%, transparent 45%),
-    radial-gradient(circle at 50% 92%, rgba(242, 255, 176, 0.05) 0%, transparent 40%);
+    radial-gradient(circle at 10% 15%, rgba(244, 237, 226, 0.8) 0%, transparent 60%),
+    radial-gradient(circle at 90% 60%, rgba(200, 159, 90, 0.07) 0%, transparent 50%),
+    radial-gradient(circle at 50% 90%, rgba(242, 255, 176, 0.06) 0%, transparent 45%);
   pointer-events: none;
   z-index: -1;
 }
@@ -110,11 +131,147 @@ h1, h2, h3, h4, .font-serif {
   font-family: var(--font-serif);
   font-weight: 500;
   letter-spacing: -0.01em;
-  color: var(--color-cream-pure);
+  color: var(--color-heading-serif);
 }
 
 p {
-  color: #D3C9BD;
+  color: var(--color-text-secondary);
+}
+
+/* ===================================================================
+   PRELOADER & OPENING LOGO TRANSITION (CREAM MILK AESTHETIC)
+   =================================================================== */
+.site-preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  background: var(--color-cream-milk-canvas);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.8s;
+  overflow: hidden;
+}
+
+.site-preloader.fade-out {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.preloader-stage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  padding: 1.5rem;
+}
+
+.preloader-emblem-wrap {
+  position: relative;
+  width: 130px;
+  height: 130px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.8rem;
+  transition: transform 1s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.8s ease;
+  will-change: transform, opacity;
+}
+
+/* Rotating aura ring around center emblem */
+.preloader-spin-ring {
+  position: absolute;
+  inset: -12px;
+  border-radius: 50%;
+  border: 2.5px solid rgba(184, 136, 59, 0.2);
+  border-top: 3.5px solid #C89F5A;
+  border-right: 3.5px solid #1B2917;
+  border-bottom: 2px solid transparent;
+  animation: preloaderSpinRing 1.8s linear infinite;
+  box-shadow: 0 0 25px rgba(200, 159, 90, 0.25);
+}
+
+@keyframes preloaderSpinRing {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.preloader-emblem-circle {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  overflow: hidden;
+  background: #FAF6F0;
+  border: 3px solid #C89F5A;
+  outline: 3px solid rgba(27, 41, 23, 0.15);
+  outline-offset: 4px;
+  box-shadow: 0 8px 30px rgba(45, 35, 20, 0.15);
+  animation: preloaderBreathe 2.4s ease-in-out infinite alternate;
+}
+
+@keyframes preloaderBreathe {
+  0% { transform: scale(0.97); }
+  100% { transform: scale(1.03); }
+}
+
+.preloader-emblem-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.preloader-text-group {
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.preloader-text-group.fade-down {
+  opacity: 0;
+  transform: translateY(15px);
+}
+
+.preloader-brand-title {
+  font-size: 2.2rem;
+  color: #172615;
+  margin-bottom: 0.2rem;
+  letter-spacing: -0.01em;
+}
+
+.preloader-brand-subtitle {
+  font-size: 0.95rem;
+  color: #7D7366;
+  font-style: italic;
+  font-family: var(--font-serif);
+  margin-bottom: 1.2rem;
+}
+
+.preloader-status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 1.1rem;
+  background: #FFFFFF;
+  border: 1px solid rgba(184, 136, 59, 0.35);
+  border-radius: var(--radius-pill);
+  font-size: 0.78rem;
+  color: #1B2917;
+  font-weight: 600;
+  box-shadow: 0 2px 10px rgba(45, 35, 20, 0.06);
+}
+
+.preloader-spin-dot {
+  width: 7px;
+  height: 7px;
+  background: #C89F5A;
+  border-radius: 50%;
+  animation: preloaderPulse 1.2s infinite ease-in-out;
+}
+
+@keyframes preloaderPulse {
+  0%, 100% { transform: scale(0.8); opacity: 0.6; }
+  50% { transform: scale(1.3); opacity: 1; }
 }
 
 a {
@@ -150,17 +307,17 @@ img {
 }
 
 /* ===================================================================
-   TOP ANNOUNCEMENT TICKER
+   TOP ANNOUNCEMENT TICKER (CREAM MILK AESTHETIC)
    =================================================================== */
 .top-ticker {
-  background: var(--color-black-pure);
-  border-bottom: 1px solid rgba(47, 66, 41, 0.6);
-  color: var(--color-cream-soft);
+  background: #F3EBE0;
+  border-bottom: 1px solid #E2D7C8;
+  color: #1A2817;
   font-size: 0.76rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   padding: 0.55rem 0;
-  font-weight: 500;
+  font-weight: 600;
 }
 
 .ticker-content {
@@ -186,30 +343,31 @@ img {
 
 .ticker-badge::before {
   content: "•";
-  color: var(--color-accent-lime);
+  color: var(--color-gold-accent);
 }
 
 .ticker-link {
-  color: var(--color-accent-lime);
+  color: #1A2817;
   text-decoration: underline;
   transition: var(--transition-fast);
 }
 
 .ticker-link:hover {
-  color: #ffffff;
+  color: var(--color-gold-accent);
 }
 
 /* ===================================================================
-   HEADER & NAVIGATION
+   HEADER & NAVIGATION (CREAM MILK GLASS & ENLARGED LOGO CIRCLE)
    =================================================================== */
 .site-header {
   position: sticky;
   top: 0;
   z-index: 100;
-  background: rgba(14, 20, 12, 0.92);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border-bottom: 1px solid rgba(47, 66, 41, 0.5);
+  background: rgba(250, 246, 240, 0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(184, 136, 59, 0.25);
+  box-shadow: 0 4px 20px rgba(45, 35, 20, 0.05);
   transition: var(--transition-smooth);
 }
 
@@ -217,33 +375,43 @@ img {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 5.2rem;
+  height: 5.6rem;
 }
 
 .brand-identity {
   display: flex;
   align-items: center;
-  gap: 0.95rem;
+  gap: 1.1rem;
 }
 
+/* Enlarged Circular Logo with Boundary Outline */
 .brand-logo-frame {
-  width: 52px;
-  height: 52px;
+  width: 70px;
+  height: 70px;
   border-radius: 50%;
   overflow: hidden;
   background: #FAF6F0;
-  border: 1.5px solid var(--color-gold-accent);
-  box-shadow: 0 4px 14px rgba(200, 159, 90, 0.25);
+  border: 2.5px solid var(--color-gold-accent);
+  outline: 2px solid rgba(27, 40, 23, 0.2);
+  outline-offset: 3px;
+  box-shadow: 0 4px 16px rgba(45, 35, 20, 0.12), 0 0 0 1px rgba(200, 159, 90, 0.3);
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.brand-logo-frame:hover {
+  transform: scale(1.04);
+  box-shadow: 0 6px 22px rgba(184, 136, 59, 0.25);
 }
 
 .brand-logo-frame img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  display: block;
 }
 
 .brand-text {
@@ -253,33 +421,33 @@ img {
 
 .brand-title {
   font-family: var(--font-serif);
-  font-size: 1.55rem;
+  font-size: 1.65rem;
   font-weight: 600;
-  letter-spacing: 0.05em;
-  color: var(--color-cream-pure);
+  letter-spacing: 0.03em;
+  color: var(--color-heading-serif);
   line-height: 1.05;
 }
 
 .brand-subtitle {
-  font-size: 0.72rem;
+  font-size: 0.74rem;
   letter-spacing: 0.06em;
-  color: var(--color-gold-accent);
+  color: var(--color-gold-deep);
   font-style: italic;
-  font-weight: 500;
+  font-weight: 600;
 }
 
 .nav-links {
   display: flex;
   align-items: center;
   list-style: none;
-  gap: 2rem;
+  gap: 1.8rem;
 }
 
 .nav-link {
   font-size: 0.88rem;
-  font-weight: 500;
-  letter-spacing: 0.03em;
-  color: var(--color-cream-soft);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--color-text-secondary);
   position: relative;
   padding: 0.4rem 0;
   transition: var(--transition-fast);
@@ -292,12 +460,12 @@ img {
   left: 0;
   width: 0%;
   height: 2px;
-  background: var(--color-accent-lime);
+  background: var(--color-gold-accent);
   transition: var(--transition-fast);
 }
 
 .nav-link:hover, .nav-link.active {
-  color: var(--color-accent-lime);
+  color: var(--color-heading-serif);
 }
 
 .nav-link:hover::after, .nav-link.active::after {
@@ -307,7 +475,7 @@ img {
 .nav-actions {
   display: flex;
   align-items: center;
-  gap: 0.9rem;
+  gap: 0.75rem;
 }
 
 .btn-icon {
@@ -317,26 +485,29 @@ img {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--color-cream-soft);
-  border: 1px solid rgba(47, 66, 41, 0.6);
-  background: rgba(22, 32, 19, 0.7);
+  color: #1A2817;
+  border: 1px solid rgba(184, 136, 59, 0.35);
+  background: #FFFFFF;
   position: relative;
   transition: var(--transition-fast);
+  box-shadow: 0 2px 8px rgba(45, 35, 20, 0.05);
 }
 
 .btn-icon:hover {
-  border-color: var(--color-accent-lime);
-  color: var(--color-accent-lime);
-  background: var(--color-olive-primary);
+  border-color: var(--color-gold-bright);
+  color: var(--color-gold-bright);
+  background: #F4EFE6;
+  transform: translateY(-1px);
 }
 
 .cart-count-badge {
   position: absolute;
   top: -4px;
   right: -4px;
-  background: var(--color-accent-lime);
-  color: var(--color-black-pure);
-  font-size: 0.7rem;
+  background: #1B2917;
+  color: var(--color-accent-lime);
+  border: 1px solid var(--color-accent-lime);
+  font-size: 0.68rem;
   font-weight: 800;
   width: 20px;
   height: 20px;
@@ -347,8 +518,9 @@ img {
 }
 
 .btn-header-cta {
-  background: var(--color-accent-lime);
-  color: var(--color-black-pure);
+  background: #1B2917;
+  color: #FAF6F0;
+  border: 1.5px solid rgba(184, 136, 59, 0.4);
   font-size: 0.84rem;
   font-weight: 700;
   letter-spacing: 0.03em;
@@ -357,8 +529,317 @@ img {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  box-shadow: 0 4px 15px rgba(242, 255, 176, 0.25);
+  box-shadow: 0 4px 15px rgba(27, 41, 23, 0.2);
   transition: var(--transition-fast);
+}
+
+.btn-header-cta:hover {
+  background: #253820;
+  border-color: var(--color-gold-bright);
+  color: #FFFFFF;
+  transform: translateY(-2px);
+}
+
+/* ===================================================================
+   MAIN MENU BUTTON (CONVENIENT FOR BOTH DESKTOP & MOBILE)
+   =================================================================== */
+.btn-main-menu {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.55rem 1.15rem;
+  background: #1B2917;
+  color: #FAF6F0;
+  border: 1.5px solid rgba(184, 136, 59, 0.45);
+  border-radius: var(--radius-pill);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 14px rgba(27, 41, 23, 0.2);
+}
+
+.btn-main-menu:hover {
+  background: #253820;
+  border-color: var(--color-gold-bright);
+  transform: translateY(-1px);
+}
+
+.menu-icon-bars {
+  display: flex;
+  flex-direction: column;
+  gap: 3.5px;
+  width: 16px;
+}
+
+.menu-icon-bars span {
+  display: block;
+  height: 2px;
+  background: var(--color-accent-lime);
+  border-radius: 2px;
+  transition: all 0.25s ease;
+}
+
+.menu-btn-label {
+  color: #FAF6F0;
+}
+
+/* ===================================================================
+   PRIMARY MAIN MENU DRAWER (CLEAN, SPACIOUS, CONVENIENT NAVIGATION)
+   =================================================================== */
+.main-menu-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(20, 28, 18, 0.6);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 1050;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.35s ease;
+}
+
+.main-menu-backdrop.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.main-menu-drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  max-width: 480px;
+  background: #FAF6F0;
+  border-left: 1px solid rgba(184, 136, 59, 0.3);
+  z-index: 1060;
+  display: flex;
+  flex-direction: column;
+  transform: translateX(100%);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: -10px 0 40px rgba(27, 41, 23, 0.15);
+}
+
+.main-menu-drawer.active {
+  transform: translateX(0);
+}
+
+.main-menu-header {
+  padding: 1.4rem 1.6rem;
+  border-bottom: 1px solid rgba(184, 136, 59, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #F4EFE6;
+}
+
+.main-menu-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.main-menu-logo-mini {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid var(--color-gold-accent);
+  box-shadow: 0 2px 8px rgba(45, 35, 20, 0.1);
+}
+
+.main-menu-logo-mini img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.btn-close-main-menu {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1px solid rgba(184, 136, 59, 0.3);
+  background: #FFFFFF;
+  color: #1B2917;
+  font-size: 1.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-close-main-menu:hover {
+  background: #1B2917;
+  color: #FAF6F0;
+}
+
+.main-menu-body {
+  padding: 1.4rem 1.6rem calc(1.4rem + var(--sab));
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.3rem;
+  flex-grow: 1;
+}
+
+.main-menu-status-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 0.85rem 1rem;
+  background: #FFFFFF;
+  border: 1px solid rgba(184, 136, 59, 0.25);
+  border-radius: var(--radius-sm);
+  font-size: 0.8rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.status-indicator-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #25D366;
+  margin-top: 4px;
+  flex-shrink: 0;
+  box-shadow: 0 0 8px rgba(37, 211, 102, 0.6);
+}
+
+.main-menu-status-card strong {
+  display: block;
+  color: #172615;
+  font-size: 0.82rem;
+  margin-bottom: 0.15rem;
+}
+
+.main-menu-status-card p {
+  color: #7D7366;
+  font-size: 0.74rem;
+  line-height: 1.4;
+  margin: 0;
+}
+
+.main-menu-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.main-menu-link {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  padding: 0.85rem 1rem;
+  background: #FFFFFF;
+  border: 1px solid rgba(237, 228, 216, 0.9);
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  transition: all 0.2s ease;
+  min-height: 54px;
+}
+
+.main-menu-link:hover, .main-menu-link:active {
+  background: #F4EFE6;
+  border-color: #C89F5A;
+  transform: translateX(4px);
+}
+
+.main-menu-link.menu-link-highlight {
+  background: #F5EFE6;
+  border-color: rgba(184, 136, 59, 0.4);
+}
+
+.menu-link-icon {
+  font-size: 1.25rem;
+  flex-shrink: 0;
+}
+
+.menu-link-info {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.menu-link-title {
+  color: #172615;
+  font-weight: 700;
+  font-size: 0.92rem;
+  line-height: 1.2;
+}
+
+.menu-link-desc {
+  color: #7D7366;
+  font-size: 0.73rem;
+  line-height: 1.35;
+  margin-top: 2px;
+}
+
+.menu-arrow {
+  color: #C89F5A;
+  font-size: 1rem;
+  transition: transform 0.2s ease;
+}
+
+.main-menu-link:hover .menu-arrow {
+  transform: translateX(3px);
+}
+
+.main-menu-actions-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+}
+
+.main-menu-btn-action {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  background: #1B2917;
+  color: #FAF6F0;
+  border: 1px solid rgba(184, 136, 59, 0.35);
+  border-radius: var(--radius-sm);
+  font-size: 0.8rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.main-menu-btn-action:hover {
+  background: #253820;
+  border-color: #C89F5A;
+}
+
+.main-menu-footer-links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding-top: 0.5rem;
+  border-top: 1px solid rgba(184, 136, 59, 0.2);
+}
+
+.menu-footer-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 0.75rem;
+  background: #FFFFFF;
+  border-radius: 6px;
+  font-size: 0.78rem;
+  color: #1B2917;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.menu-footer-link:hover {
+  background: #F4EFE6;
+  color: #B8883B;
 }
 
 .btn-header-cta:hover {
@@ -381,13 +862,14 @@ img {
 }
 
 /* ===================================================================
-   HERO BANNER & TRUST ARCHITECTURE
+   HERO BANNER & TRUST ARCHITECTURE (CREAM MILK AESTHETIC)
    =================================================================== */
 .hero-section {
   position: relative;
   padding: 5rem 0 5.5rem;
   overflow: hidden;
-  border-bottom: 1px solid rgba(47, 66, 41, 0.4);
+  background: linear-gradient(180deg, #FAF6F0 0%, #F5EFE6 100%);
+  border-bottom: 1px solid #E5DCCE;
 }
 
 .hero-grid {
@@ -403,9 +885,9 @@ img {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  background: rgba(34, 48, 30, 0.6);
-  border: 1px solid rgba(242, 255, 176, 0.3);
-  color: var(--color-accent-lime);
+  background: #FFFFFF;
+  border: 1px solid rgba(184, 136, 59, 0.35);
+  color: var(--color-gold-accent);
   font-size: 0.78rem;
   font-weight: 700;
   letter-spacing: 0.12em;
@@ -413,26 +895,27 @@ img {
   padding: 0.45rem 1rem;
   border-radius: var(--radius-pill);
   margin-bottom: 1.4rem;
+  box-shadow: 0 2px 8px rgba(45, 35, 20, 0.05);
 }
 
 .hero-headline {
   font-size: 3.6rem;
   line-height: 1.12;
-  font-weight: 500;
+  font-weight: 600;
   margin-bottom: 1.2rem;
-  color: var(--color-cream-pure);
+  color: var(--color-heading-serif);
 }
 
 .hero-headline em {
   font-style: italic;
   font-family: var(--font-serif);
-  color: var(--color-accent-lime);
-  font-weight: 400;
+  color: var(--color-gold-accent);
+  font-weight: 500;
 }
 
 .hero-subheadline {
   font-size: 1.1rem;
-  color: #D6CBC0;
+  color: var(--color-text-secondary);
   line-height: 1.7;
   max-width: 580px;
   margin-bottom: 2.2rem;
@@ -447,8 +930,9 @@ img {
 }
 
 .btn-primary {
-  background: var(--color-accent-lime);
-  color: var(--color-black-pure);
+  background: #1B2917;
+  color: #FAF6F0;
+  border: 1.5px solid rgba(184, 136, 59, 0.4);
   font-weight: 700;
   font-size: 0.94rem;
   letter-spacing: 0.02em;
@@ -457,33 +941,37 @@ img {
   display: inline-flex;
   align-items: center;
   gap: 0.6rem;
-  box-shadow: 0 4px 20px rgba(242, 255, 176, 0.25);
+  box-shadow: 0 4px 20px rgba(27, 41, 23, 0.2);
   transition: var(--transition-fast);
 }
 
 .btn-primary:hover {
-  background: #ffffff;
+  background: #253820;
+  border-color: var(--color-gold-bright);
+  color: #FFFFFF;
   transform: translateY(-2px);
-  box-shadow: 0 8px 30px rgba(242, 255, 176, 0.4);
+  box-shadow: 0 8px 30px rgba(27, 41, 23, 0.3);
 }
 
 .btn-secondary {
-  background: rgba(34, 48, 30, 0.6);
-  color: var(--color-cream-soft);
-  border: 1px solid rgba(242, 255, 176, 0.35);
-  font-weight: 600;
+  background: #FFFFFF;
+  color: #1B2917;
+  border: 1.5px solid rgba(184, 136, 59, 0.45);
+  font-weight: 700;
   font-size: 0.94rem;
   padding: 0.95rem 1.9rem;
   border-radius: var(--radius-pill);
   display: inline-flex;
   align-items: center;
   gap: 0.6rem;
+  box-shadow: 0 2px 8px rgba(45, 35, 20, 0.05);
   transition: var(--transition-fast);
 }
 
 .btn-secondary:hover {
-  background: var(--color-olive-mid);
-  color: var(--color-accent-lime);
+  background: #F4EFE6;
+  border-color: var(--color-gold-accent);
+  color: var(--color-gold-accent);
   transform: translateY(-2px);
 }
 
@@ -492,7 +980,7 @@ img {
   grid-template-columns: repeat(2, 1fr);
   gap: 1.2rem;
   padding-top: 1.8rem;
-  border-top: 1px solid rgba(47, 66, 41, 0.5);
+  border-top: 1px solid #E5DCCE;
 }
 
 .trust-pill {
@@ -505,34 +993,34 @@ img {
   width: 22px;
   height: 22px;
   flex-shrink: 0;
-  color: var(--color-accent-lime);
+  color: var(--color-gold-accent);
   margin-top: 2px;
 }
 
 .trust-pill-text {
   font-size: 0.84rem;
   line-height: 1.45;
-  color: #C8BFB4;
+  color: var(--color-text-secondary);
 }
 
 .trust-pill-text strong {
-  color: var(--color-cream-pure);
+  color: var(--color-heading-serif);
   display: block;
   font-size: 0.9rem;
 }
 
-/* Hero Showcase Card */
+/* Hero Showcase Card (Cream Porcelain) */
 .hero-visual-card {
   position: relative;
-  background: linear-gradient(155deg, #1C2719 0%, #121A10 100%);
+  background: #FFFFFF;
   border-radius: var(--radius-lg);
   padding: 2rem;
-  box-shadow: var(--shadow-lg);
-  border: 1px solid rgba(47, 66, 41, 0.6);
+  box-shadow: 0 10px 30px rgba(45, 35, 20, 0.08);
+  border: 1.5px solid rgba(184, 136, 59, 0.25);
 }
 
 .hero-art-wrapper {
-  background: radial-gradient(circle at center, #263622 0%, #141C11 80%);
+  background: radial-gradient(circle at center, #FAF6F0 0%, #EDE4D8 85%);
   border-radius: var(--radius-md);
   padding: 2.2rem 1.6rem;
   text-align: center;
@@ -731,19 +1219,20 @@ img {
 
 .concern-pill {
   font-size: 0.78rem;
-  font-weight: 500;
+  font-weight: 600;
   padding: 0.4rem 0.95rem;
   border-radius: var(--radius-pill);
-  background: rgba(18, 26, 16, 0.7);
-  border: 1px solid rgba(47, 66, 41, 0.5);
-  color: #C8BEB3;
+  background: #FFFFFF;
+  border: 1px solid rgba(184, 136, 59, 0.3);
+  color: var(--color-text-secondary);
   transition: var(--transition-fast);
+  box-shadow: 0 2px 6px rgba(45, 35, 20, 0.04);
 }
 
 .concern-pill:hover, .concern-pill.active {
-  border-color: var(--color-accent-lime);
-  color: var(--color-accent-lime);
-  background: rgba(34, 48, 30, 0.8);
+  border-color: #1B2917;
+  color: #FAF6F0;
+  background: #1B2917;
 }
 
 .products-grid {
@@ -752,22 +1241,22 @@ img {
   gap: 2rem;
 }
 
-/* Product Card - Minimalist Nature Design (No harsh border effect!) */
+/* Product Card - Minimalist Nature Cream Milk Design */
 .product-card {
-  background: linear-gradient(170deg, #182215 0%, #121910 100%);
+  background: #FFFFFF;
   border-radius: var(--radius-md);
   padding: 1.5rem;
   display: flex;
   flex-direction: column;
   position: relative;
-  box-shadow: var(--shadow-sm);
+  box-shadow: 0 4px 18px rgba(45, 35, 20, 0.05);
   transition: transform 0.35s ease, box-shadow 0.35s ease;
-  border: 1px solid rgba(47, 66, 41, 0.4); /* Minimal subtle border, no border hover flash */
+  border: 1.5px solid rgba(184, 136, 59, 0.22);
 }
 
 .product-card:hover {
   transform: translateY(-5px);
-  box-shadow: var(--shadow-lg);
+  box-shadow: 0 12px 35px rgba(184, 136, 59, 0.16);
 }
 
 .product-card-badge {
@@ -784,26 +1273,28 @@ img {
 }
 
 .badge-olive {
-  background: rgba(34, 48, 30, 0.8);
-  color: var(--color-accent-lime);
-  border: 1px solid var(--color-accent-lime-border);
+  background: #1B2917;
+  color: #f2ffb0;
+  border: 1px solid rgba(242, 255, 176, 0.4);
 }
 
 .badge-lime {
-  background: var(--color-accent-lime);
-  color: var(--color-black-pure);
+  background: #1B2917;
+  color: #FAF6F0;
+  border: 1.5px solid #C89F5A;
 }
 
 .badge-coffee {
-  background: var(--color-gold-deep);
-  color: #ffffff;
+  background: #C89F5A;
+  color: #1B2917;
+  font-weight: 800;
 }
 
 /* ===================================================================
-   360-DEGREE ROTATING PRODUCT STAGE (CURSOR INTERACTION)
+   360-DEGREE ROTATING PRODUCT STAGE (CURSOR & TOUCH INTERACTION)
    =================================================================== */
 .product-media {
-  background: radial-gradient(circle at center, #263622 0%, #11180E 80%);
+  background: radial-gradient(circle at center, #F8F3EA 0%, #EDE4D8 85%);
   border-radius: var(--radius-sm);
   height: 230px;
   display: flex;
@@ -815,7 +1306,7 @@ img {
   overflow: hidden;
   cursor: grab;
   perspective: 1000px;
-  border: none; /* NO border effect! */
+  border: 1px solid rgba(184, 136, 59, 0.18);
 }
 
 .product-media:active {
@@ -828,14 +1319,14 @@ img {
   right: 8px;
   font-size: 0.65rem;
   color: var(--color-accent-lime);
-  background: rgba(9, 13, 7, 0.75);
-  padding: 0.25rem 0.6rem;
+  background: #1B2917;
+  padding: 0.25rem 0.65rem;
   border-radius: var(--radius-pill);
   letter-spacing: 0.05em;
   display: flex;
   align-items: center;
   gap: 0.35rem;
-  border: 1px solid rgba(242, 255, 176, 0.25);
+  border: 1px solid var(--color-accent-lime-border);
   pointer-events: none;
   z-index: 5;
 }
@@ -860,7 +1351,7 @@ img {
 .product-illustration-art {
   width: 100%;
   height: 100%;
-  filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.5));
+  filter: drop-shadow(0 8px 18px rgba(45, 35, 20, 0.2));
   backface-visibility: visible;
 }
 
@@ -870,7 +1361,7 @@ img {
   bottom: 12px;
   width: 90px;
   height: 12px;
-  background: radial-gradient(ellipse at center, rgba(9, 13, 7, 0.8) 0%, transparent 70%);
+  background: radial-gradient(ellipse at center, rgba(45, 35, 20, 0.35) 0%, transparent 70%);
   border-radius: 50%;
   pointer-events: none;
   transition: transform 0.35s ease, opacity 0.35s ease;
@@ -887,7 +1378,7 @@ img {
   left: 50%;
   transform: translateX(-50%) translateY(20px);
   opacity: 0;
-  background: rgba(14, 20, 12, 0.9);
+  background: #1B2917;
   color: var(--color-accent-lime);
   font-size: 0.76rem;
   font-weight: 700;
@@ -916,13 +1407,13 @@ img {
 .product-name {
   font-size: 1.45rem;
   line-height: 1.25;
-  color: var(--color-cream-pure);
+  color: var(--color-heading-serif);
   margin-bottom: 0.45rem;
 }
 
 .product-snippet {
   font-size: 0.85rem;
-  color: #C8BEB3;
+  color: var(--color-text-secondary);
   line-height: 1.55;
   margin-bottom: 1rem;
   flex-grow: 1;
@@ -941,30 +1432,30 @@ img {
   font-weight: 700;
   padding: 0.25rem 0.65rem;
   border-radius: var(--radius-pill);
-  border: 1px solid rgba(47, 66, 41, 0.6);
-  background: rgba(22, 32, 19, 0.6);
-  color: var(--color-cream-soft);
+  border: 1px solid rgba(184, 136, 59, 0.3);
+  background: #F4EFE6;
+  color: #1B2917;
   transition: var(--transition-fast);
 }
 
 .size-pill-btn.active, .size-pill-btn:hover {
-  background: var(--color-accent-lime);
-  color: var(--color-black-pure);
-  border-color: var(--color-accent-lime);
+  background: #1B2917;
+  color: #FAF6F0;
+  border-color: #1B2917;
 }
 
 .product-ingredients-preview {
-  background: rgba(14, 20, 12, 0.6);
+  background: #FAF6F0;
   border-radius: var(--radius-sm);
   padding: 0.55rem 0.8rem;
   font-size: 0.74rem;
-  color: #C8BEB3;
+  color: var(--color-text-secondary);
   margin-bottom: 1.1rem;
-  border: 1px dashed rgba(47, 66, 41, 0.5);
+  border: 1px dashed rgba(184, 136, 59, 0.35);
 }
 
 .product-ingredients-preview strong {
-  color: var(--color-accent-lime);
+  color: var(--color-gold-accent);
 }
 
 .product-footer {
@@ -972,7 +1463,7 @@ img {
   align-items: center;
   justify-content: space-between;
   padding-top: 1rem;
-  border-top: 1px solid rgba(47, 66, 41, 0.4);
+  border-top: 1px solid #E5DCCE;
 }
 
 .product-price-box {
@@ -982,34 +1473,37 @@ img {
 
 .product-price {
   font-family: var(--font-serif);
-  font-size: 1.45rem;
+  font-size: 1.55rem;
   font-weight: 700;
-  color: var(--color-accent-lime);
+  color: var(--color-heading-serif);
 }
 
 .product-volume {
   font-size: 0.72rem;
-  color: #9E9385;
+  color: #7D7366;
 }
 
 .btn-add-cart {
-  background: var(--color-olive-mid);
-  color: var(--color-cream-pure);
-  border: 1px solid var(--color-accent-lime-border);
+  background: #1B2917;
+  color: #FAF6F0;
+  border: 1.5px solid rgba(184, 136, 59, 0.4);
   font-size: 0.82rem;
   font-weight: 700;
   padding: 0.6rem 1.15rem;
   border-radius: var(--radius-pill);
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.4rem;
   transition: var(--transition-fast);
+  box-shadow: 0 2px 10px rgba(27, 41, 23, 0.15);
 }
 
 .btn-add-cart:hover {
-  background: var(--color-accent-lime);
-  color: var(--color-black-pure);
-  box-shadow: 0 4px 15px rgba(242, 255, 176, 0.35);
+  background: #253820;
+  border-color: #C89F5A;
+  color: #FFFFFF;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(27, 41, 23, 0.25);
 }
 
 /* ===================================================================
@@ -1254,18 +1748,18 @@ img {
 }
 
 /* ===================================================================
-   FSSAI ACCREDITATION SECTION
+   FSSAI ACCREDITATION SECTION (CREAM MILK AESTHETIC)
    =================================================================== */
 .fssai-showcase-grid {
   display: grid;
   grid-template-columns: 1.15fr 0.85fr;
   gap: 3.5rem;
   align-items: center;
-  background: linear-gradient(155deg, #1A2417 0%, #121910 100%);
+  background: #FFFFFF;
   border-radius: var(--radius-lg);
   padding: 3.2rem;
-  box-shadow: var(--shadow-md);
-  border: 1px solid rgba(47, 66, 41, 0.5);
+  box-shadow: 0 10px 30px rgba(45, 35, 20, 0.08);
+  border: 1.5px solid rgba(184, 136, 59, 0.3);
   position: relative;
   overflow: hidden;
 }
@@ -1274,15 +1768,16 @@ img {
   position: relative;
   border-radius: var(--radius-md);
   padding: 12px;
-  background: linear-gradient(135deg, #3A2C1F, #634B35, #3A2C1F);
-  box-shadow: 0 15px 35px rgba(9, 13, 7, 0.4);
+  background: linear-gradient(135deg, #FAF6F0, #EDE4D8, #FAF6F0);
+  border: 2px solid var(--color-gold-accent);
+  box-shadow: 0 10px 30px rgba(45, 35, 20, 0.12);
   cursor: pointer;
   transition: var(--transition-smooth);
 }
 
 .fssai-cert-frame:hover {
   transform: translateY(-4px) scale(1.01);
-  box-shadow: 0 20px 45px rgba(9, 13, 7, 0.6);
+  box-shadow: 0 15px 40px rgba(184, 136, 59, 0.25);
 }
 
 .fssai-cert-img {
@@ -1296,8 +1791,8 @@ img {
   position: absolute;
   bottom: 22px;
   right: 22px;
-  background: rgba(9, 13, 7, 0.9);
-  border: 1px solid var(--color-accent-lime);
+  background: #1B2917;
+  border: 1px solid var(--color-gold-accent);
   color: var(--color-accent-lime);
   font-size: 0.75rem;
   font-weight: 700;
@@ -1314,7 +1809,7 @@ img {
   gap: 1.2rem;
   margin-top: 2.2rem;
   padding-top: 2rem;
-  border-top: 1px solid rgba(47, 66, 41, 0.5);
+  border-top: 1px solid #E5DCCE;
 }
 
 .brand-value-item {
@@ -1329,18 +1824,19 @@ img {
   width: 54px;
   height: 54px;
   border-radius: 50%;
-  background: rgba(22, 32, 19, 0.7);
-  border: 1.5px solid rgba(242, 255, 176, 0.3);
+  background: #F4EFE6;
+  border: 1.5px solid rgba(184, 136, 59, 0.35);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--color-accent-lime);
+  color: var(--color-gold-accent);
   transition: var(--transition-fast);
+  box-shadow: 0 2px 8px rgba(45, 35, 20, 0.05);
 }
 
 .brand-value-item:hover .brand-value-circle {
-  background: var(--color-accent-lime);
-  color: var(--color-black-pure);
+  background: #1B2917;
+  color: var(--color-accent-lime);
   transform: scale(1.08);
 }
 
@@ -1349,7 +1845,7 @@ img {
   font-weight: 700;
   letter-spacing: 0.04em;
   text-transform: uppercase;
-  color: var(--color-cream-pure);
+  color: var(--color-heading-serif);
 }
 
 .brand-motto-bar {
@@ -1482,18 +1978,18 @@ img {
 }
 
 .clinic-info-card {
-  background: linear-gradient(160deg, #1C2719 0%, #121A10 100%);
+  background: #FFFFFF;
   border-radius: var(--radius-md);
   padding: 2.8rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  box-shadow: var(--shadow-md);
-  border: 1px solid rgba(47, 66, 41, 0.5);
+  box-shadow: 0 10px 30px rgba(45, 35, 20, 0.08);
+  border: 1.5px solid rgba(184, 136, 59, 0.3);
 }
 
 .clinic-badge {
-  color: var(--color-accent-lime);
+  color: var(--color-gold-accent);
   font-size: 0.78rem;
   font-weight: 800;
   letter-spacing: 0.1em;
@@ -1506,12 +2002,12 @@ img {
   font-size: 2rem;
   line-height: 1.25;
   margin-bottom: 1rem;
-  color: var(--color-cream-pure);
+  color: var(--color-heading-serif);
 }
 
 .clinic-lead {
   font-size: 0.95rem;
-  color: #D3C9BD;
+  color: var(--color-text-secondary);
   line-height: 1.65;
   margin-bottom: 1.8rem;
 }
@@ -1532,7 +2028,7 @@ img {
 .clinic-detail-icon {
   width: 24px;
   height: 24px;
-  color: var(--color-accent-lime);
+  color: var(--color-gold-accent);
   flex-shrink: 0;
   margin-top: 2px;
 }
@@ -1540,36 +2036,36 @@ img {
 .clinic-detail-item strong {
   display: block;
   font-size: 0.9rem;
-  color: var(--color-cream-pure);
+  color: var(--color-heading-serif);
 }
 
 .clinic-detail-item span {
   font-size: 0.85rem;
-  color: #BDB2A5;
+  color: var(--color-text-secondary);
 }
 
 .map-visual-card {
-  background: #090D07;
+  background: #FFFFFF;
   border-radius: var(--radius-md);
   padding: 2rem;
   display: flex;
   flex-direction: column;
   position: relative;
   overflow: hidden;
-  box-shadow: var(--shadow-md);
-  border: 1px solid rgba(47, 66, 41, 0.5);
+  box-shadow: 0 10px 30px rgba(45, 35, 20, 0.08);
+  border: 1.5px solid rgba(184, 136, 59, 0.3);
 }
 
 .map-canvas-mock {
   width: 100%;
   height: 290px;
   background: 
-    radial-gradient(circle at 50% 50%, rgba(47, 66, 41, 0.5) 0%, transparent 60%),
-    linear-gradient(#151E12 1px, transparent 1px),
-    linear-gradient(90deg, #151E12 1px, transparent 1px);
+    radial-gradient(circle at 50% 50%, #FAF6F0 0%, #EDE4D8 70%),
+    linear-gradient(#E5DCCE 1px, transparent 1px),
+    linear-gradient(90deg, #E5DCCE 1px, transparent 1px);
   background-size: 100% 100%, 24px 24px, 24px 24px;
   border-radius: var(--radius-sm);
-  border: 1px solid rgba(47, 66, 41, 0.6);
+  border: 1px solid rgba(184, 136, 59, 0.3);
   position: relative;
   display: flex;
   align-items: center;
@@ -1584,31 +2080,32 @@ img {
 }
 
 .pin-beacon {
-  width: 20px;
-  height: 20px;
-  background: var(--color-accent-lime);
+  width: 22px;
+  height: 22px;
+  background: #1B2917;
+  border: 2px solid var(--color-gold-bright);
   border-radius: 50%;
-  box-shadow: 0 0 25px var(--color-accent-lime);
+  box-shadow: 0 0 20px rgba(184, 136, 59, 0.6);
   animation: pinPulse 2s infinite;
 }
 
 @keyframes pinPulse {
-  0% { transform: scale(0.9); box-shadow: 0 0 10px var(--color-accent-lime); }
-  50% { transform: scale(1.3); box-shadow: 0 0 25px var(--color-accent-lime); }
-  100% { transform: scale(0.9); box-shadow: 0 0 10px var(--color-accent-lime); }
+  0% { transform: scale(0.9); box-shadow: 0 0 8px rgba(184, 136, 59, 0.4); }
+  50% { transform: scale(1.2); box-shadow: 0 0 22px rgba(184, 136, 59, 0.8); }
+  100% { transform: scale(0.9); box-shadow: 0 0 8px rgba(184, 136, 59, 0.4); }
 }
 
 .pin-bubble {
-  background: var(--color-black-pure);
-  border: 1.5px solid var(--color-accent-lime);
+  background: #1B2917;
+  border: 1.5px solid var(--color-gold-accent);
   padding: 0.6rem 1rem;
   border-radius: var(--radius-sm);
-  color: var(--color-cream-pure);
+  color: #FAF6F0;
   font-size: 0.78rem;
   font-weight: 700;
   white-space: nowrap;
   margin-top: 0.5rem;
-  box-shadow: var(--shadow-md);
+  box-shadow: 0 4px 14px rgba(27, 41, 23, 0.25);
 }
 
 .map-card-footer {
@@ -2114,14 +2611,15 @@ img {
 }
 
 /* ===================================================================
-   CINEMATIC TRANSITION PORTAL: THE SACRED WHITE COMPOLUNDING VESSEL
+   CINEMATIC TRANSITION PORTAL: THE SACRED WHITE COMPOUNDING VESSEL
    =================================================================== */
 .bowl-transition-portal {
   position: relative;
   height: 220vh;
-  background: radial-gradient(circle at 50% 30%, #172314 0%, #0D130A 75%, #080C06 100%);
+  background: radial-gradient(circle at 50% 30%, #FAF6F0 0%, #F5EFE6 60%, #EDE4D8 100%);
   overflow: visible;
-  border-top: 1px solid rgba(47, 66, 41, 0.4);
+  border-top: 1px solid #E5DCCE;
+  border-bottom: 1px solid #E5DCCE;
 }
 
 .portal-sticky-track {
@@ -2145,7 +2643,7 @@ img {
   transform: translate(-50%, -50%);
   width: 380px;
   height: 380px;
-  background: radial-gradient(circle, rgba(255, 255, 255, 0.22) 0%, rgba(242, 255, 176, 0.12) 45%, transparent 70%);
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.8) 0%, rgba(200, 159, 90, 0.18) 45%, transparent 70%);
   border-radius: 50%;
   filter: blur(40px);
   pointer-events: none;
@@ -2184,9 +2682,9 @@ img {
   border-radius: 20px 20px 92px 92px;
   border: 2px solid rgba(255, 255, 255, 0.95);
   box-shadow: 
-    0 25px 65px rgba(0, 0, 0, 0.65),
-    0 0 35px rgba(255, 255, 255, 0.25),
-    inset 0 -16px 28px rgba(150, 130, 110, 0.38),
+    0 18px 50px rgba(45, 35, 20, 0.2),
+    0 0 35px rgba(255, 255, 255, 0.8),
+    inset 0 -16px 28px rgba(150, 130, 110, 0.32),
     inset 0 8px 16px rgba(255, 255, 255, 0.95);
   position: relative;
   display: flex;
@@ -2209,7 +2707,7 @@ img {
   height: 9px;
   background: linear-gradient(90deg, #E2CA9E 0%, #FFFFFF 35%, #D4AF37 70%, #E2CA9E 100%);
   border-radius: 20px 20px 0 0;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.25);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.2);
   z-index: 3;
 }
 
@@ -2218,7 +2716,7 @@ img {
   inset: 8px 12px 8px 12px;
   background: radial-gradient(ellipse at 50% 35%, #FFFFFF 0%, #F5EDE4 50%, #D5C7B5 100%);
   border-radius: 12px 12px 78px 78px;
-  box-shadow: inset 0 8px 18px rgba(120, 100, 80, 0.35);
+  box-shadow: inset 0 8px 18px rgba(120, 100, 80, 0.3);
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -2262,7 +2760,7 @@ img {
   background: linear-gradient(90deg, #FFFFFF 0%, #F4EDE4 45%, #D9CEBE 85%, #BBA891 100%);
   border-radius: 16px 16px 20px 20px;
   border-top: 4px solid #C89F5A;
-  box-shadow: -5px 8px 20px rgba(0, 0, 0, 0.45), inset 0 2px 6px rgba(255, 255, 255, 0.9);
+  box-shadow: -4px 6px 16px rgba(45, 35, 20, 0.22), inset 0 2px 6px rgba(255, 255, 255, 0.9);
   position: absolute;
   top: -15px;
   left: calc(50% - 16px);
@@ -2296,20 +2794,21 @@ img {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.12em;
-  padding: 0.3rem 0.85rem;
+  padding: 0.35rem 0.95rem;
   border-radius: var(--radius-pill);
-  background: rgba(242, 255, 176, 0.15);
-  border: 1px solid var(--color-accent-lime-border);
-  color: var(--color-accent-lime);
+  background: #FFFFFF;
+  border: 1px solid rgba(184, 136, 59, 0.35);
+  color: var(--color-gold-accent);
   margin-bottom: 1rem;
+  box-shadow: 0 2px 8px rgba(45, 35, 20, 0.05);
 }
 
 .portal-badge-dot {
   width: 7px;
   height: 7px;
   border-radius: 50%;
-  background: var(--color-accent-lime);
-  box-shadow: 0 0 8px var(--color-accent-lime);
+  background: var(--color-gold-accent);
+  box-shadow: 0 0 6px var(--color-gold-accent);
   animation: dotPulse 1.8s infinite;
 }
 
@@ -2320,15 +2819,14 @@ img {
 
 .portal-title {
   font-size: 2.8rem;
-  color: #FFFFFF;
+  color: #172615;
   margin-bottom: 0.8rem;
   line-height: 1.15;
-  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
 }
 
 .portal-subtitle {
   font-size: 0.98rem;
-  color: #D3C9BD;
+  color: #554E45;
   line-height: 1.65;
   margin-bottom: 1.6rem;
 }
@@ -2342,13 +2840,13 @@ img {
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--color-accent-lime);
+  color: #172615;
 }
 
 .portal-mouse-indicator {
   width: 22px;
   height: 36px;
-  border: 2px solid var(--color-accent-lime-border);
+  border: 2px solid rgba(184, 136, 59, 0.4);
   border-radius: 12px;
   position: relative;
   display: flex;
@@ -2358,7 +2856,7 @@ img {
 .mouse-wheel {
   width: 4px;
   height: 8px;
-  background: var(--color-accent-lime);
+  background: #B8883B;
   border-radius: 2px;
   position: absolute;
   top: 6px;
@@ -2390,11 +2888,11 @@ img {
 }
 
 .lab-panel {
-  background: linear-gradient(155deg, #182215 0%, #11180E 100%);
-  border: 1px solid rgba(47, 66, 41, 0.6);
+  background: #FFFFFF;
+  border: 1.5px solid rgba(184, 136, 59, 0.25);
   border-radius: var(--radius-lg);
   padding: 2.4rem;
-  box-shadow: var(--shadow-md);
+  box-shadow: 0 8px 30px rgba(45, 35, 20, 0.06);
   position: relative;
 }
 
@@ -2404,12 +2902,13 @@ img {
   align-items: center;
   margin-bottom: 1.5rem;
   padding-bottom: 0.9rem;
-  border-bottom: 1px solid rgba(47, 66, 41, 0.5);
+  border-bottom: 1px solid #E5DCCE;
 }
 
 .lab-step-title {
   font-size: 1.25rem;
-  color: var(--color-cream-pure);
+  color: var(--color-heading-serif);
+  font-weight: 700;
   display: flex;
   align-items: center;
   gap: 0.6rem;
@@ -2420,9 +2919,9 @@ img {
   font-weight: 700;
   padding: 0.25rem 0.75rem;
   border-radius: var(--radius-pill);
-  background: rgba(242, 255, 176, 0.15);
-  border: 1px solid var(--color-accent-lime-border);
-  color: var(--color-accent-lime);
+  background: #FAF6F0;
+  border: 1px solid rgba(184, 136, 59, 0.35);
+  color: var(--color-gold-accent);
 }
 
 /* Herb Selection Cards Grid */
@@ -2433,8 +2932,8 @@ img {
 }
 
 .herb-card {
-  background: rgba(9, 13, 7, 0.65);
-  border: 1.5px solid rgba(47, 66, 41, 0.6);
+  background: #FFFFFF;
+  border: 1.5px solid rgba(184, 136, 59, 0.25);
   border-radius: var(--radius-sm);
   padding: 1rem;
   cursor: pointer;
@@ -2444,18 +2943,19 @@ img {
   gap: 0.45rem;
   position: relative;
   user-select: none;
+  box-shadow: 0 2px 8px rgba(45, 35, 20, 0.04);
 }
 
 .herb-card:hover {
-  border-color: var(--color-accent-lime);
+  border-color: #B8883B;
   transform: translateY(-2px);
-  background: rgba(22, 32, 19, 0.85);
+  background: #F8F3EA;
 }
 
 .herb-card.selected {
-  border-color: var(--color-accent-lime);
-  background: rgba(242, 255, 176, 0.1);
-  box-shadow: 0 0 15px rgba(242, 255, 176, 0.2);
+  border-color: #1B2917;
+  background: #F5EFE6;
+  box-shadow: 0 4px 16px rgba(184, 136, 59, 0.2);
 }
 
 .herb-card.disabled {
@@ -2473,26 +2973,42 @@ img {
   width: 36px;
   height: 36px;
   border-radius: 50%;
-  background: rgba(34, 48, 30, 0.9);
+  background: #F4EFE6;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--color-accent-lime);
-  border: 1px solid var(--color-accent-lime-border);
+  color: var(--color-gold-accent);
+  border: 1px solid rgba(184, 136, 59, 0.35);
 }
 
 .herb-check-pill {
   width: 22px;
   height: 22px;
   border-radius: 50%;
-  border: 1.5px solid rgba(47, 66, 41, 0.8);
+  border: 1.5px solid rgba(184, 136, 59, 0.5);
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 0.72rem;
   font-weight: 800;
-  color: var(--color-black-pure);
+  color: #1B2917;
   transition: var(--transition-fast);
+}
+
+.herb-card-title {
+  color: #172615;
+  font-weight: 700;
+}
+
+.herb-card-latin {
+  color: #7D7366;
+  font-size: 0.75rem;
+}
+
+.herb-card-benefit {
+  color: #554E45;
+  font-size: 0.8rem;
+  line-height: 1.4;
 }
 
 .herb-card.selected .herb-check-pill {
@@ -2699,133 +3215,50 @@ img {
 }
 
 /* ===================================================================
-   MOBILE NAVIGATION & PWA INSTALL PILL
-   =================================================================== */
-.mobile-bottom-nav {
-  display: none;
-}
-
-.mobile-pwa-pill {
-  display: none;
-}
-
-.indicator-desktop {
-  display: inline;
-}
-
-.indicator-mobile {
-  display: none;
-}
-
-/* ===================================================================
    RESPONSIVE QUERIES: MOBILE & TABLET (ANDROID & iOS OPTIMIZED)
    =================================================================== */
 @media (max-width: 768px) {
   body {
-    padding-bottom: calc(var(--mobile-nav-height) + var(--sab));
+    padding-bottom: 0;
   }
 
-  /* Fixed Mobile Bottom Nav Bar (Thumb Zone) */
-  .mobile-bottom-nav {
-    display: flex;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: calc(var(--mobile-nav-height) + var(--sab));
-    padding: 0.35rem 0.6rem var(--sab) 0.6rem;
-    background: rgba(14, 20, 12, 0.94);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border-top: 1px solid rgba(242, 255, 176, 0.16);
-    z-index: 990;
-    justify-content: space-around;
-    align-items: center;
-    box-shadow: 0 -8px 24px rgba(0, 0, 0, 0.5);
+  /* Enlarged Header Logo on Mobile */
+  .brand-logo-frame {
+    width: 58px;
+    height: 58px;
+    outline-offset: 2px;
   }
 
-  .mobile-nav-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 0.2rem;
-    background: none;
-    border: none;
-    color: #A39686;
-    text-decoration: none;
+  .brand-title {
+    font-size: 1.35rem;
+  }
+
+  .brand-subtitle {
     font-size: 0.68rem;
-    font-weight: 600;
-    letter-spacing: 0.02em;
-    min-width: 58px;
-    padding: 0.35rem 0.2rem;
-    border-radius: 8px;
-    transition: all 0.2s ease;
-    cursor: pointer;
-    -webkit-tap-highlight-color: transparent;
   }
 
-  .mobile-nav-item:active {
-    transform: scale(0.92);
-  }
-
-  .mobile-nav-item.active {
-    color: var(--color-accent-lime);
-  }
-
-  .mobile-nav-item.active .mobile-nav-icon {
-    transform: translateY(-2px);
-    color: var(--color-accent-lime);
-  }
-
-  .mobile-nav-icon {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: transform 0.2s ease;
-  }
-
-  .mobile-bag-badge {
-    position: absolute;
-    top: -6px;
-    right: -10px;
-    background: var(--color-accent-lime);
-    color: var(--color-black-pure);
-    font-size: 0.62rem;
-    font-weight: 900;
-    min-width: 17px;
-    height: 17px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0 3px;
-    box-shadow: 0 0 8px rgba(242, 255, 176, 0.6);
-  }
-
-  /* Floating WhatsApp Concierge above Mobile Bar */
+  /* Floating WhatsApp Concierge */
   .floating-whatsapp-trigger {
-    bottom: calc(var(--mobile-nav-height) + var(--sab) + 12px);
-    right: 1.1rem;
-    width: 48px;
-    height: 48px;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6);
+    bottom: calc(1.5rem + var(--sab));
+    right: 1.2rem;
+    width: 52px;
+    height: 52px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
   }
 
   /* PWA Install Banner Pill */
   .mobile-pwa-pill {
     position: fixed;
-    bottom: calc(var(--mobile-nav-height) + var(--sab) + 10px);
+    bottom: calc(1.5rem + var(--sab));
     left: 1rem;
-    right: 4.8rem; /* Leaves room for WhatsApp button */
+    right: 5.2rem; /* Leaves room for WhatsApp button */
     z-index: 989;
-    background: rgba(22, 32, 19, 0.95);
-    border: 1px solid var(--color-accent-lime-border);
+    background: #FFFFFF;
+    border: 1.5px solid var(--color-gold-accent);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
     border-radius: var(--radius-pill);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+    box-shadow: 0 10px 30px rgba(45, 35, 20, 0.15);
     padding: 0.5rem 0.75rem;
     transform: translateY(120%);
     opacity: 0;

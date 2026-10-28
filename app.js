@@ -300,7 +300,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initMobileMenu();
   initBotanicalLab();
   initBowlScrollTransition();
-  initMobileBottomNav();
+  initSitePreloader();
   initPwaAndMobileApp();
 });
 
@@ -1662,42 +1662,103 @@ function initBowlScrollTransition() {
 }
 
 // ===================================================================
-// MOBILE APP NAVIGATION & ACTIVE TAB TRACKING (ANDROID & iOS)
+// SITE PRELOADER & CINEMATIC OPENING LOGO TRANSITION
+// 1. Shows rotating logo emblem in screen center while loading.
+// 2. Smoothly translates & scales down to the header position ("move to aside").
 // ===================================================================
-function initMobileBottomNav() {
-  const navItems = document.querySelectorAll(".mobile-bottom-nav .mobile-nav-item[data-section]");
-  if (navItems.length === 0) return;
+function initSitePreloader() {
+  const preloader = document.getElementById("sitePreloader");
+  const emblemWrap = document.getElementById("preloaderEmblemWrap");
+  const textGroup = document.getElementById("preloaderTextGroup");
+  const headerFrame = document.getElementById("headerLogoFrame");
 
-  const sections = ["heroSection", "shopSection", "labSection", "clinicSection"];
-  
-  function updateActiveMobileNav() {
-    const scrollPos = window.scrollY + 200;
-    let currentActive = "heroSection";
+  if (!preloader || !emblemWrap || !headerFrame) return;
 
-    sections.forEach(secId => {
-      const el = document.getElementById(secId);
-      if (el) {
-        const top = el.offsetTop;
-        const height = el.offsetHeight;
-        if (scrollPos >= top && scrollPos < top + height) {
-          currentActive = secId;
-        }
-      }
-    });
+  function runOpeningTransition() {
+    // Hide text group smoothly
+    if (textGroup) {
+      textGroup.classList.add("fade-down");
+    }
 
-    navItems.forEach(item => {
-      const targetSec = item.getAttribute("data-section");
-      if (targetSec === currentActive) {
-        item.classList.add("active");
-      } else {
-        item.classList.remove("active");
-      }
+    // Get source (preloader emblem center) and target (header frame center) coordinates
+    const srcRect = emblemWrap.getBoundingClientRect();
+    const tgtRect = headerFrame.getBoundingClientRect();
+
+    const srcCenterX = srcRect.left + srcRect.width / 2;
+    const srcCenterY = srcRect.top + srcRect.height / 2;
+
+    const tgtCenterX = tgtRect.left + tgtRect.width / 2;
+    const tgtCenterY = tgtRect.top + tgtRect.height / 2;
+
+    const deltaX = tgtCenterX - srcCenterX;
+    const deltaY = tgtCenterY - srcCenterY;
+    const scaleFactor = tgtRect.width > 0 ? (tgtRect.width / srcRect.width) : 0.54;
+
+    // Apply the glide transition to aside
+    emblemWrap.style.transition = "transform 0.95s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.75s ease";
+    emblemWrap.style.transform = `translate3d(${deltaX}px, ${deltaY}px, 0) scale(${scaleFactor})`;
+
+    // Fade out preloader curtain in parallel
+    setTimeout(() => {
+      preloader.classList.add("fade-out");
+    }, 450);
+
+    // Clean up when animation finishes
+    setTimeout(() => {
+      preloader.style.display = "none";
+    }, 1100);
+  }
+
+  // Ensure minimum 1.1s so user experiences the elegant loading rotation
+  const startTime = Date.now();
+  if (document.readyState === "complete") {
+    setTimeout(runOpeningTransition, 1100);
+  } else {
+    window.addEventListener("load", () => {
+      const elapsed = Date.now() - startTime;
+      const remainingDelay = Math.max(0, 1100 - elapsed);
+      setTimeout(runOpeningTransition, remainingDelay);
     });
   }
 
-  window.addEventListener("scroll", updateActiveMobileNav, { passive: true });
-  updateActiveMobileNav();
+  // Fallback trigger
+  setTimeout(() => {
+    if (!preloader.classList.contains("fade-out")) {
+      runOpeningTransition();
+    }
+  }, 2500);
 }
+
+// ===================================================================
+// PRIMARY MAIN MENU DRAWER CONTROLS (CONVENIENT NAVIGATION)
+// ===================================================================
+function openMainMenu() {
+  const drawer = document.getElementById("mainMenuDrawer");
+  const backdrop = document.getElementById("mainMenuBackdrop");
+  if (drawer && backdrop) {
+    drawer.classList.add("active");
+    backdrop.classList.add("active");
+    document.body.style.overflow = "hidden";
+  }
+}
+
+function closeMainMenu() {
+  const drawer = document.getElementById("mainMenuDrawer");
+  const backdrop = document.getElementById("mainMenuBackdrop");
+  if (drawer && backdrop) {
+    drawer.classList.remove("active");
+    backdrop.classList.remove("active");
+    document.body.style.overflow = "";
+  }
+}
+
+// Close on Escape key
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape") {
+    closeMainMenu();
+    closeCartDrawer();
+  }
+});
 
 // ===================================================================
 // PWA & NATIVE MOBILE APP INSTALLATION PROMPT (ANDROID & iOS)
