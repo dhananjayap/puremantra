@@ -342,7 +342,7 @@ function renderProducts() {
   if (filtered.length === 0) {
     grid.innerHTML = `
       <div style="grid-column: 1 / -1; text-align: center; padding: 4rem 1rem;">
-        <p style="font-size: 1.1rem; color: #C8BEB3; margin-bottom: 1rem;">
+        <p style="font-size: 1.1rem; color: var(--color-text-secondary); margin-bottom: 1rem;">
           No formulations match this combination.
         </p>
         <button class="btn-secondary" onclick="resetFilters()">Reset All Filters</button>
@@ -386,7 +386,7 @@ function renderProducts() {
 
       <!-- Size Selector -->
       <div class="product-size-selector">
-        <span style="font-size: 0.72rem; color: #9E9385; font-weight: 600;">Size:</span>
+        <span style="font-size: 0.72rem; color: var(--color-text-muted); font-weight: 700;">Size:</span>
         ${item.sizes.map(s => `
           <button class="size-pill-btn ${s.size === item.selectedSize ? 'active' : ''}" onclick="selectProductSize('${item.id}', '${s.size}', ${s.price}, this)">
             ${s.size}
@@ -610,13 +610,13 @@ function updateCartUI() {
 
   if (cart.length === 0) {
     itemsContainer.innerHTML = `
-      <div style="text-align: center; padding: 3rem 1rem; color: #9E9385;">
+      <div style="text-align: center; padding: 3rem 1rem; color: #EDE4D8;">
         <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="margin: 0 auto 1rem; opacity: 0.6;">
           <circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/>
           <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
         </svg>
-        <p style="font-size: 1rem; margin-bottom: 0.4rem; color: var(--color-cream-pure); font-weight: 700;">Your bag is empty</p>
-        <p style="font-size: 0.85rem; margin-bottom: 1.5rem;">Handcrafted botanical formulations from Puthiyara, Kozhikode.</p>
+        <p style="font-size: 1rem; margin-bottom: 0.4rem; color: #FFFDF9; font-weight: 700;">Your bag is empty</p>
+        <p style="font-size: 0.85rem; margin-bottom: 1.5rem; color: #EDE4D8;">Handcrafted botanical formulations from Puthiyara, Kozhikode.</p>
         <button class="btn-primary" onclick="closeCartDrawer(); scrollToSection('shopSection')">Explore Formulations</button>
       </div>
     `;
@@ -634,11 +634,11 @@ function updateCartUI() {
       <div class="cart-item-meta">
         <div class="cart-item-title">${item.name}</div>
         <div class="cart-item-price">₹${item.price.toLocaleString("en-IN")}</div>
-        <span style="font-size: 0.74rem; color: #A4988B;">Size: ${item.volume}</span>
+        <span style="font-size: 0.74rem; color: #EDE4D8;">Size: ${item.volume}</span>
       </div>
       <div class="cart-item-qty">
         <button class="btn-qty-mod" onclick="modifyQty('${item.cartId}', -1)">-</button>
-        <span style="font-size: 0.9rem; font-weight: 700; min-width: 18px; text-align: center; color: var(--color-cream-pure);">${item.qty}</span>
+        <span style="font-size: 0.9rem; font-weight: 700; min-width: 18px; text-align: center; color: #FFFDF9;">${item.qty}</span>
         <button class="btn-qty-mod" onclick="modifyQty('${item.cartId}', 1)">+</button>
       </div>
     </div>
@@ -673,7 +673,7 @@ function openProductModal(productId) {
         </div>
 
         <span class="product-card-badge ${item.badgeType}" style="position: static; display: inline-block; margin-bottom: 0.6rem;">${item.badge}</span>
-        <div style="font-size: 0.78rem; color: #BDB2A5;">Interactive 360° Visual Model &bull; Photo Ready</div>
+        <div style="font-size: 0.78rem; color: #EDE4D8;">Interactive 360° Visual Model &bull; Photo Ready</div>
       </div>
 
       <div>
@@ -684,7 +684,7 @@ function openProductModal(productId) {
         <div style="font-size: 0.95rem; color: #EDE4D8; margin-bottom: 1.2rem;">${item.subName}</div>
 
         <div style="font-family: var(--font-serif); font-size: 1.9rem; font-weight: 700; color: #f2ffb0; margin-bottom: 1.2rem;">
-          ₹${item.price.toLocaleString("en-IN")} <span style="font-size: 0.85rem; font-family: var(--font-sans); color: #C8BEB3;">(${item.selectedSize})</span>
+          ₹${item.price.toLocaleString("en-IN")} <span style="font-size: 0.85rem; font-family: var(--font-sans); color: #EDE4D8;">(${item.selectedSize})</span>
         </div>
 
         <p style="font-size: 0.94rem; color: #EDE4D8; line-height: 1.65; margin-bottom: 1.4rem;">
@@ -874,8 +874,8 @@ function showOrderSuccessModal(name, phone, region, total) {
       </div>
 
       <span style="font-size: 0.78rem; font-weight: 700; color: var(--color-accent-lime); text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 0.4rem;">Order Confirmed • ${orderNum}</span>
-      <h2 style="font-size: 2.2rem; margin-bottom: 0.8rem; color: var(--color-cream-pure);" class="font-serif">Gratitude, ${name || 'Patron'}</h2>
-      <p style="font-size: 0.95rem; color: #D3C9BD; max-width: 480px; margin: 0 auto 1.8rem; line-height: 1.65;">
+      <h2 style="font-size: 2.2rem; margin-bottom: 0.8rem; color: #FFFDF9;" class="font-serif">Gratitude, ${name || 'Patron'}</h2>
+      <p style="font-size: 0.95rem; color: #EDE4D8; max-width: 480px; margin: 0 auto 1.8rem; line-height: 1.65;">
         Your artisanal order of <strong>₹${total.toLocaleString("en-IN")}</strong> has been registered with our exclusive store in Puthiyara, Kozhikode.
       </p>
 
@@ -1017,8 +1017,8 @@ function showQuizResults() {
     itemsContainer.innerHTML = items.map(p => `
       <div style="background: rgba(14, 20, 12, 0.7); border: 1px solid rgba(47, 66, 41, 0.6); border-radius: var(--radius-sm); padding: 1.4rem;">
         <span style="font-size: 0.72rem; text-transform: uppercase; color: var(--color-gold-accent); font-weight: 700;">${p.pillarLabel}</span>
-        <h4 style="font-size: 1.25rem; color: var(--color-cream-pure); margin: 0.3rem 0;" class="font-serif">${p.name}</h4>
-        <p style="font-size: 0.84rem; color: #C8BEB3; margin-bottom: 0.9rem;">${p.shortDesc}</p>
+        <h4 style="font-size: 1.25rem; color: #FFFDF9; margin: 0.3rem 0;" class="font-serif">${p.name}</h4>
+        <p style="font-size: 0.84rem; color: #EDE4D8; margin-bottom: 0.9rem;">${p.shortDesc}</p>
         <div style="display: flex; justify-content: space-between; align-items: center;">
           <span style="font-family: var(--font-serif); font-size: 1.25rem; font-weight: 700; color: var(--color-accent-lime);">₹${p.price.toLocaleString("en-IN")}</span>
           <button class="btn-add-cart" style="padding: 0.4rem 0.85rem; font-size: 0.78rem;" onclick="addToCart('${p.id}')">Add to Bag</button>
@@ -1064,30 +1064,30 @@ function openBrewingGuideModal() {
   content.innerHTML = `
     <div>
       <span style="font-size: 0.75rem; font-weight: 700; color: var(--color-gold-accent); text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 0.4rem;">Classical Ritucharya Protocol</span>
-      <h2 style="font-size: 2rem; color: var(--color-cream-pure); margin-bottom: 0.8rem;" class="font-serif">The Authentic Karkidaka Kanji Brewing Ritual</h2>
-      <p style="font-size: 0.94rem; color: #D3C9BD; line-height: 1.65; margin-bottom: 1.6rem;">
+      <h2 style="font-size: 2rem; color: #FFFDF9; margin-bottom: 0.8rem;" class="font-serif">The Authentic Karkidaka Kanji Brewing Ritual</h2>
+      <p style="font-size: 0.94rem; color: #EDE4D8; line-height: 1.65; margin-bottom: 1.6rem;">
         Follow this revered Kerala monsoon rejuvenation method (Karkidaka Chikitsa) formulated in synergy with traditional martial arts and seasonal health wisdom in Puthiyara, Kozhikode.
       </p>
 
       <div style="display: flex; flex-direction: column; gap: 1rem; margin-bottom: 2rem;">
         <div style="background: rgba(9, 13, 7, 0.7); border: 1px solid rgba(47, 66, 41, 0.6); border-radius: var(--radius-sm); padding: 1rem;">
           <strong style="color: var(--color-accent-lime); display: block; margin-bottom: 0.2rem;">Step 1: The Njavara Grain Rinse</strong>
-          <p style="font-size: 0.86rem; color: #C8BEB3;">Take one pre-measured sachet of organic unpolished Njavara rice from your kit. Wash gently in cold spring water twice. Do not scrub hard to retain medicinal hull nutrients.</p>
+          <p style="font-size: 0.86rem; color: #EDE4D8;">Take one pre-measured sachet of organic unpolished Njavara rice from your kit. Wash gently in cold spring water twice. Do not scrub hard to retain medicinal hull nutrients.</p>
         </div>
 
         <div style="background: rgba(9, 13, 7, 0.7); border: 1px solid rgba(47, 66, 41, 0.6); border-radius: var(--radius-sm); padding: 1rem;">
           <strong style="color: var(--color-accent-lime); display: block; margin-bottom: 0.2rem;">Step 2: Herbal Kizhi Immersion</strong>
-          <p style="font-size: 0.86rem; color: #C8BEB3;">Add 7 to 8 cups of water in an earthen pot or thick brass pan. Submerge the pre-tied Dashapushpam &amp; Trikatu Spice Kizhi together with the rinsed Njavara rice.</p>
+          <p style="font-size: 0.86rem; color: #EDE4D8;">Add 7 to 8 cups of water in an earthen pot or thick brass pan. Submerge the pre-tied Dashapushpam &amp; Trikatu Spice Kizhi together with the rinsed Njavara rice.</p>
         </div>
 
         <div style="background: rgba(9, 13, 7, 0.7); border: 1px solid rgba(47, 66, 41, 0.6); border-radius: var(--radius-sm); padding: 1rem;">
           <strong style="color: var(--color-accent-lime); display: block; margin-bottom: 0.2rem;">Step 3: Slow Simmer (Mridu Paka)</strong>
-          <p style="font-size: 0.86rem; color: #C8BEB3;">Bring to a rolling boil, then lower the flame to a gentle simmer for 35-40 minutes. Using a wooden ladle, occasionally press the herbal spice Kizhi against the pot side to extract herbal carminatives.</p>
+          <p style="font-size: 0.86rem; color: #EDE4D8;">Bring to a rolling boil, then lower the flame to a gentle simmer for 35-40 minutes. Using a wooden ladle, occasionally press the herbal spice Kizhi against the pot side to extract herbal carminatives.</p>
         </div>
 
         <div style="background: rgba(9, 13, 7, 0.7); border: 1px solid rgba(47, 66, 41, 0.6); border-radius: var(--radius-sm); padding: 1rem;">
           <strong style="color: var(--color-accent-lime); display: block; margin-bottom: 0.2rem;">Step 4: Fresh Coconut Milk &amp; Ghee Tempering</strong>
-          <p style="font-size: 0.86rem; color: #C8BEB3;">Remove the Kizhi. Stir in 1/2 cup of freshly squeezed coconut milk and half a teaspoon of pure cow's ghee. Serve warm as your evening meal during the monsoon phase.</p>
+          <p style="font-size: 0.86rem; color: #EDE4D8;">Remove the Kizhi. Stir in 1/2 cup of freshly squeezed coconut milk and half a teaspoon of pure cow's ghee. Serve warm as your evening meal during the monsoon phase.</p>
         </div>
       </div>
 
@@ -1134,17 +1134,17 @@ function openFssaiModal() {
             </div>
 
             <div style="margin-bottom: 0.9rem;">
-              <span style="color: #C8BEB3; display: block; font-size: 0.72rem; text-transform: uppercase; font-weight: 700;">Location &amp; Operating Base:</span>
+              <span style="color: #D9CEC0; display: block; font-size: 0.72rem; text-transform: uppercase; font-weight: 700;">Location &amp; Operating Base:</span>
               <strong style="color: #FFFDF9;">Puthiyara, Kozhikode, Kerala, India</strong>
             </div>
 
             <div style="margin-bottom: 0.9rem;">
-              <span style="color: #C8BEB3; display: block; font-size: 0.72rem; text-transform: uppercase; font-weight: 700;">Kind of Business:</span>
+              <span style="color: #D9CEC0; display: block; font-size: 0.72rem; text-transform: uppercase; font-weight: 700;">Kind of Business:</span>
               <span style="color: #EDE4D8; font-weight: 600;">Food Vending Establishment &amp; Artisanal Formulations</span>
             </div>
 
             <div>
-              <span style="color: #C8BEB3; display: block; font-size: 0.72rem; text-transform: uppercase; font-weight: 700;">Statutory Scope:</span>
+              <span style="color: #D9CEC0; display: block; font-size: 0.72rem; text-transform: uppercase; font-weight: 700;">Statutory Scope:</span>
               <span style="color: #EDE4D8;">Internal Organic Wellness Foods &amp; External Cosmetic Blends</span>
             </div>
           </div>
@@ -1152,7 +1152,7 @@ function openFssaiModal() {
       </div>
 
       <div style="display: flex; justify-content: space-between; align-items: center; gap: 1rem; flex-wrap: wrap;">
-        <span style="font-size: 0.76rem; color: #C8BEB3;">Verified Food Safety Standards compliance under FSS Act, 2006.</span>
+        <span style="font-size: 0.76rem; color: #EDE4D8;">Verified Food Safety Standards compliance under FSS Act, 2006.</span>
         <div style="display: flex; gap: 0.8rem;">
           <button class="btn-secondary" onclick="if(window.PURE_MANTRA_ASSETS?.fssai){const w=window.open('');w.document.write('<title>FSSAI Registration Certificate - Pure Mantra</title><img src=\x22'+window.PURE_MANTRA_ASSETS.fssai+'\x22 style=\x22max-width:100%;margin:20px auto;display:block;\x22>');}else{window.open('fssai-license.png', '_blank');}" style="font-size: 0.84rem; padding: 0.65rem 1.2rem;">Open Full Image</button>
           <button class="btn-primary" onclick="closeFssaiModal()" style="font-size: 0.84rem; padding: 0.65rem 1.2rem;">Close Certificate</button>
@@ -1472,29 +1472,29 @@ function completeFormulationReveal() {
         <span style="font-size: 0.75rem; font-weight: 700; color: var(--color-accent-lime); text-transform: uppercase; letter-spacing: 0.12em; display: block; margin-bottom: 0.3rem;">
           ✨ Your Compounded Formulation
         </span>
-        <h3 class="font-serif" style="font-size: 2.1rem; color: var(--color-cream-pure);">${formulaTitle}</h3>
+        <h3 class="font-serif" style="font-size: 2.1rem; color: #FFFDF9;">${formulaTitle}</h3>
       </div>
       <button class="btn-secondary" onclick="resetBotanicalLab()" style="padding: 0.45rem 0.95rem; font-size: 0.8rem;">
         Blend Another ↺
       </button>
     </div>
 
-    <p style="font-size: 0.93rem; color: #D3C9BD; line-height: 1.65; margin-bottom: 1.5rem;">
+    <p style="font-size: 0.93rem; color: #EDE4D8; line-height: 1.65; margin-bottom: 1.5rem;">
       ${formulaDesc}
     </p>
 
     <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-bottom: 1.8rem; background: rgba(9, 13, 7, 0.7); border: 1px solid rgba(47, 66, 41, 0.6); border-radius: var(--radius-sm); padding: 1rem; text-align: center;">
       <div>
-        <span style="font-size: 0.72rem; color: #A39686; text-transform: uppercase; font-weight: 700; display: block;">Vata Harmony</span>
-        <strong style="color: var(--color-accent-lime); font-size: 0.88rem;">${vataEffect}</strong>
+        <span style="font-size: 0.72rem; color: #D9CEC0; text-transform: uppercase; font-weight: 700; display: block;">Vata Harmony</span>
+        <strong style="color: #f2ffb0; font-size: 0.88rem;">${vataEffect}</strong>
       </div>
       <div>
-        <span style="font-size: 0.72rem; color: #A39686; text-transform: uppercase; font-weight: 700; display: block;">Pitta Harmony</span>
-        <strong style="color: var(--color-accent-lime); font-size: 0.88rem;">${pittaEffect}</strong>
+        <span style="font-size: 0.72rem; color: #D9CEC0; text-transform: uppercase; font-weight: 700; display: block;">Pitta Harmony</span>
+        <strong style="color: #f2ffb0; font-size: 0.88rem;">${pittaEffect}</strong>
       </div>
       <div>
-        <span style="font-size: 0.72rem; color: #A39686; text-transform: uppercase; font-weight: 700; display: block;">Kapha Harmony</span>
-        <strong style="color: var(--color-cream-pure); font-size: 0.88rem;">${kaphaEffect}</strong>
+        <span style="font-size: 0.72rem; color: #D9CEC0; text-transform: uppercase; font-weight: 700; display: block;">Kapha Harmony</span>
+        <strong style="color: #FFFDF9; font-size: 0.88rem;">${kaphaEffect}</strong>
       </div>
     </div>
 
@@ -1505,8 +1505,8 @@ function completeFormulationReveal() {
         </div>
         <div>
           <span style="font-size: 0.74rem; color: var(--color-gold-accent); text-transform: uppercase; font-weight: 700;">Matched Store Formulation:</span>
-          <h4 class="font-serif" style="font-size: 1.35rem; color: var(--color-cream-pure);">${matchedProduct.name}</h4>
-          <span style="font-size: 0.84rem; color: var(--color-accent-lime); font-weight: 700;">₹${matchedProduct.price.toLocaleString("en-IN")} &bull; Handcrafted in Puthiyara</span>
+          <h4 class="font-serif" style="font-size: 1.35rem; color: #FFFDF9;">${matchedProduct.name}</h4>
+          <span style="font-size: 0.84rem; color: #f2ffb0; font-weight: 700;">₹${matchedProduct.price.toLocaleString("en-IN")} &bull; Handcrafted in Puthiyara</span>
         </div>
       </div>
 

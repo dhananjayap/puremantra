@@ -1,5 +1,5 @@
 // Pure Mantra Service Worker - Mobile Cache & Offline Support
-const CACHE_NAME = 'pure-mantra-v2';
+const CACHE_NAME = 'pure-mantra-v3';
 const ASSETS_TO_CACHE = [
   './',
   './index.html',
