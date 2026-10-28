@@ -317,6 +317,7 @@ function initAssetGuards() {
 document.addEventListener("DOMContentLoaded", () => {
   try { initAssetGuards(); } catch(e) { console.error("Asset guard error:", e); }
   try { initSitePreloader(); } catch(e) { console.error("Preloader error:", e); }
+  try { initMobileTickerFader(); } catch(e) { console.error("Ticker fader error:", e); }
   try { renderProducts(); } catch(e) { console.error("Product render error:", e); }
   try { updateCartUI(); } catch(e) { console.error("Cart UI error:", e); }
   try { initFilterListeners(); } catch(e) { console.error("Filter listeners error:", e); }
@@ -1107,6 +1108,18 @@ function closeBrewingGuideModal() {
   document.body.style.overflow = "";
 }
 
+// --- Open Full High-Resolution FSSAI Certificate in Clean Viewer ---
+function openFullFssaiImage() {
+  const asset = window.PURE_MANTRA_ASSETS?.fssai || 'fssai-license.png';
+  const w = window.open('', '_blank');
+  if (w) {
+    w.document.write(`<!DOCTYPE html><html><head><title>FSSAI Registration Certificate - Pure Mantra</title><meta name="viewport" content="width=device-width, initial-scale=1.0"><style>body{margin:0;background:#0d140b;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;padding:20px;font-family:sans-serif;color:#FAF6F0;box-sizing:border-box;}img{max-width:100%;max-height:88vh;height:auto;border-radius:8px;box-shadow:0 10px 40px rgba(0,0,0,0.85);border:2px solid #C89F5A;}p{margin-top:14px;font-size:13px;color:#E0B872;letter-spacing:0.05em;text-align:center;}</style></head><body><img src="${asset}" alt="Official FSSAI Registration Certificate"><p>Commissionerate of Food Safety, Government of Kerala &bull; Reg. No. 21323242000345</p></body></html>`);
+    w.document.close();
+  } else {
+    window.open('fssai-license.png', '_blank');
+  }
+}
+
 // --- FSSAI Verification Modal ---
 function openFssaiModal() {
   const content = document.getElementById("fssaiModalContent");
@@ -1122,7 +1135,7 @@ function openFssaiModal() {
 
       <div style="display: grid; grid-template-columns: 1fr 1.15fr; gap: 1.8rem; align-items: start; margin-bottom: 1.6rem;">
         <div style="background: #090D07; border-radius: var(--radius-sm); padding: 10px; text-align: center; border: 1.5px solid #C89F5A;">
-          <img src="fssai-license.jpg" alt="Pure Mantra Official FSSAI Registration Certificate" style="width: 100%; min-height: 250px; height: auto; border-radius: 4px; display: block; cursor: pointer; object-fit: contain;" onerror="if(window.PURE_MANTRA_ASSETS?.fssai){this.src=window.PURE_MANTRA_ASSETS.fssai;}this.onerror=null;" onclick="if(window.PURE_MANTRA_ASSETS?.fssai){const w=window.open('');w.document.write('<title>FSSAI Registration Certificate - Pure Mantra</title><img src=\x22'+this.src+'\x22 style=\x22max-width:100%;margin:20px auto;display:block;\x22>');}else{window.open('fssai-license.jpg', '_blank');}">
+          <img src="fssai-license.jpg" alt="Pure Mantra Official FSSAI Registration Certificate" style="width: 100%; min-height: 250px; height: auto; border-radius: 4px; display: block; cursor: pointer; object-fit: contain;" onerror="if(window.PURE_MANTRA_ASSETS?.fssai){this.src=window.PURE_MANTRA_ASSETS.fssai;}this.onerror=null;" onclick="openFullFssaiImage()">
           <span style="font-size: 0.72rem; color: #f2ffb0; display: block; margin-top: 0.5rem; font-weight: 600;">Click photo to open full resolution certificate</span>
         </div>
 
@@ -1154,7 +1167,7 @@ function openFssaiModal() {
       <div style="display: flex; justify-content: space-between; align-items: center; gap: 1rem; flex-wrap: wrap;">
         <span style="font-size: 0.76rem; color: #EDE4D8;">Verified Food Safety Standards compliance under FSS Act, 2006.</span>
         <div style="display: flex; gap: 0.8rem;">
-          <button class="btn-secondary" onclick="if(window.PURE_MANTRA_ASSETS?.fssai){const w=window.open('');w.document.write('<title>FSSAI Registration Certificate - Pure Mantra</title><img src=\x22'+window.PURE_MANTRA_ASSETS.fssai+'\x22 style=\x22max-width:100%;margin:20px auto;display:block;\x22>');}else{window.open('fssai-license.png', '_blank');}" style="font-size: 0.84rem; padding: 0.65rem 1.2rem;">Open Full Image</button>
+          <button class="btn-secondary" onclick="openFullFssaiImage()" style="font-size: 0.84rem; padding: 0.65rem 1.2rem;">Open Full Resolution</button>
           <button class="btn-primary" onclick="closeFssaiModal()" style="font-size: 0.84rem; padding: 0.65rem 1.2rem;">Close Certificate</button>
         </div>
       </div>
@@ -1168,6 +1181,35 @@ function openFssaiModal() {
 function closeFssaiModal() {
   document.getElementById("fssaiModal")?.classList.remove("active");
   document.body.style.overflow = "";
+}
+
+// --- Top Announcement Ticker Fading Rotator (Mobile Mode) ---
+function initMobileTickerFader() {
+  const container = document.getElementById("topTickerItems");
+  if (!container) return;
+  const badges = Array.from(container.querySelectorAll(".ticker-badge"));
+  if (badges.length === 0) return;
+
+  let activeIndex = 0;
+
+  function cycleBadge() {
+    if (window.innerWidth <= 768) {
+      badges.forEach((badge, index) => {
+        if (index === activeIndex) {
+          badge.classList.add("active-fade");
+        } else {
+          badge.classList.remove("active-fade");
+        }
+      });
+      activeIndex = (activeIndex + 1) % badges.length;
+    } else {
+      badges.forEach(b => b.classList.remove("active-fade"));
+    }
+  }
+
+  cycleBadge();
+  setInterval(cycleBadge, 3200);
+  window.addEventListener("resize", cycleBadge);
 }
 
 // --- Mobile Navigation ---
@@ -1568,17 +1610,6 @@ function initBowlScrollTransition() {
   const dockedPot = document.getElementById("dockedMortarPot");
 
   if (!portal || !vessel || !targetSlot) return;
-
-  // On mobile viewports (<= 768px), keep the lab workbench 100% visible and active
-  if (window.innerWidth <= 768) {
-    if (labContent) {
-      labContent.style.opacity = "1";
-      labContent.style.transform = "none";
-    }
-    if (dockedPot) dockedPot.style.opacity = "1";
-    if (vessel) vessel.style.display = "none";
-    return;
-  }
 
   let isTicking = false;
 

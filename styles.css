@@ -1778,11 +1778,11 @@ img {
 .fssai-showcase-grid {
   display: grid;
   grid-template-columns: 1.15fr 0.85fr;
-  gap: 3.5rem;
+  gap: 2.4rem;
   align-items: center;
   background: #FFFFFF;
   border-radius: var(--radius-lg);
-  padding: 3.2rem;
+  padding: 2.2rem 2.5rem;
   box-shadow: 0 10px 30px rgba(45, 35, 20, 0.08);
   border: 1.5px solid rgba(184, 136, 59, 0.3);
   position: relative;
@@ -1792,11 +1792,14 @@ img {
 .fssai-cert-frame {
   position: relative;
   border-radius: var(--radius-md);
-  padding: 12px;
+  padding: 10px;
   background: linear-gradient(135deg, #FAF6F0, #EDE4D8, #FAF6F0);
   border: 2px solid var(--color-gold-accent);
   box-shadow: 0 10px 30px rgba(45, 35, 20, 0.12);
   cursor: pointer;
+  max-width: 320px;
+  margin: 0 auto;
+  overflow: hidden;
   transition: var(--transition-smooth);
 }
 
@@ -1807,7 +1810,7 @@ img {
 
 .fssai-cert-img {
   width: 100%;
-  min-height: 250px;
+  max-height: 340px;
   height: auto;
   border-radius: 4px;
   display: block;
@@ -3539,23 +3542,49 @@ img {
     cursor: grabbing;
   }
 
-  /* Top Ticker Mobile Optimizations */
+  /* Top Announcement Ticker - Fading Message Carousel on Mobile */
   .top-ticker {
     padding: 0.4rem 0.6rem;
+    height: 2.3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
   }
   .ticker-content {
-    flex-direction: column;
-    gap: 0.3rem;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin: 0;
   }
   .ticker-items {
-    overflow-x: auto;
-    white-space: nowrap;
+    position: relative;
     width: 100%;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
+    height: 1.6rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
   }
-  .ticker-items::-webkit-scrollbar {
-    display: none;
+  .ticker-items .ticker-badge {
+    position: absolute;
+    opacity: 0;
+    transform: translateY(8px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    pointer-events: none;
+    white-space: nowrap;
+    text-align: center;
+    max-width: 96%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 0.74rem;
+  }
+  .ticker-items .ticker-badge.active-fade {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+    position: relative;
   }
   .ticker-links-row {
     display: none !important;
@@ -3725,28 +3754,49 @@ img {
     min-height: 280px;
   }
 
-  /* FSSAI Statutory Section */
+  /* FSSAI Statutory Section - Compact Length */
   .fssai-showcase-grid {
     grid-template-columns: 1fr;
-    padding: 1.6rem 1.1rem;
-    gap: 1.8rem;
+    padding: 1.4rem 1.1rem;
+    gap: 1.4rem;
   }
   .fssai-showcase-grid h2 {
-    font-size: 1.85rem !important;
+    font-size: 1.75rem !important;
+  }
+  .fssai-cert-frame {
+    max-width: 260px;
+    padding: 8px;
+    margin: 0 auto;
+  }
+  .fssai-cert-img {
+    max-height: 220px;
+    min-height: auto;
   }
   .brand-values-strip {
-    grid-template-columns: 1fr;
-    gap: 0.75rem;
-    margin-top: 1.4rem;
-    padding-top: 1.4rem;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.6rem;
+    margin-top: 1rem;
+    padding-top: 1rem;
+  }
+  .brand-value-item {
+    gap: 0.5rem;
+    padding: 0.35rem;
+  }
+  .brand-value-circle {
+    width: 36px;
+    height: 36px;
+  }
+  .brand-value-label {
+    font-size: 0.74rem;
   }
   .brand-motto-bar {
     flex-wrap: wrap;
     gap: 0.4rem 0.6rem;
     border-radius: var(--radius-sm);
-    padding: 0.6rem 0.8rem;
-    font-size: 0.78rem;
+    padding: 0.55rem 0.8rem;
+    font-size: 0.76rem;
     justify-content: center;
+    margin-top: 1.2rem;
   }
   .brand-motto-bar span:not(:last-child)::after {
     display: none;
@@ -3793,53 +3843,82 @@ img {
     justify-content: center;
   }
 
-  /* Transition Portal & Herbarium Blending Lab (In Sequential Order: Step 1 then Step 2) */
+  /* Transition Portal & Sacred Stone Khalva Game Transition (Active on Mobile Exactly as Desktop) */
   .bowl-transition-portal {
-    height: auto;
-    min-height: auto;
-    padding: 2.6rem 0 1.2rem;
+    position: relative;
+    height: 200vh;
     background: radial-gradient(circle at 50% 30%, #FAF6F0 0%, #F5EFE6 60%, #EDE4D8 100%);
+    overflow: visible;
   }
   .portal-sticky-track {
-    position: relative;
-    height: auto;
-    padding: 0;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    pointer-events: none;
   }
   .portal-text-overlay {
-    position: relative;
-    top: auto;
-    left: auto;
-    transform: none !important;
-    opacity: 1 !important;
-    padding: 1.8rem 1.1rem;
-    max-width: 100%;
+    position: absolute;
+    top: 48%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     text-align: center;
-    background: #FFFFFF;
+    max-width: 90%;
+    width: 90%;
+    padding: 1.5rem 1rem;
+    background: rgba(255, 255, 255, 0.94);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1.5px solid var(--color-gold-accent);
     border-radius: var(--radius-md);
-    border: 1px solid rgba(184, 136, 59, 0.3);
-    box-shadow: var(--shadow-sm);
-    margin-bottom: 1.2rem;
+    box-shadow: 0 10px 30px rgba(45, 35, 20, 0.1);
+    z-index: 2;
   }
   .portal-title {
     font-size: 1.65rem;
+    margin-bottom: 0.5rem;
   }
   .portal-subtitle {
-    font-size: 0.86rem;
-    line-height: 1.55;
-    margin-bottom: 1rem;
+    font-size: 0.85rem;
+    line-height: 1.5;
+    margin-bottom: 0.8rem;
   }
   .portal-scroll-prompt {
-    display: none;
+    display: flex;
+    font-size: 0.74rem;
+    gap: 0.4rem;
+    justify-content: center;
   }
   .transition-vessel-wrapper {
-    display: none !important;
+    position: fixed;
+    top: 0;
+    left: 0;
+    transform-origin: center center;
+    z-index: 95;
+    pointer-events: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    will-change: transform, opacity;
+    opacity: 0;
+    transition: opacity 0.25s ease;
+  }
+  .transition-vessel-wrapper .white-stone-bowl-visual {
+    width: 160px;
+    height: 110px;
+  }
+  .transition-vessel-wrapper .portal-ambient-aura {
+    width: 240px;
+    height: 240px;
   }
   #labContentContainer {
-    opacity: 1 !important;
-    transform: none !important;
-  }
-  #dockedMortarPot {
-    opacity: 1 !important;
+    transition: opacity 0.4s ease, transform 0.4s ease;
   }
   .lab-playground-grid {
     grid-template-columns: 1fr;
