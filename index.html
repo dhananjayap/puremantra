@@ -2,9 +2,20 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
   <title>Pure Mantra Ayurvedic Cosmetology | Handcrafted in Puthiyara, Kozhikode</title>
   <meta name="description" content="100% Traditional, Small-Batch Ayurvedic Cosmetology & Wellness. Handcrafted in Puthiyara, Kozhikode, Kerala. FSSAI Compliant.">
+  
+  <!-- Mobile & PWA Optimization for Android & iOS -->
+  <meta name="theme-color" content="#10170E">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Pure Mantra">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="format-detection" content="telephone=no">
+  <link rel="apple-touch-icon" href="logo.jpg">
+  <link rel="manifest" href="manifest.json">
+
   <link rel="icon" type="image/jpeg" href="logo.jpg">
   <link rel="stylesheet" href="styles.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -1159,6 +1170,56 @@
       <div id="fssaiModalContent">
         <!-- Injected via app.js -->
       </div>
+    </div>
+  </div>
+
+  <!-- ===================================================================
+       MOBILE BOTTOM NAVIGATION BAR (ANDROID & iOS THUMB NAVIGATION)
+       =================================================================== -->
+  <nav class="mobile-bottom-nav" id="mobileBottomNav" aria-label="Mobile Navigation">
+    <a href="#heroSection" class="mobile-nav-item active" data-section="heroSection" id="mobileNavHome">
+      <div class="mobile-nav-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      </div>
+      <span>Home</span>
+    </a>
+    <a href="#shopSection" class="mobile-nav-item" data-section="shopSection" id="mobileNavShop">
+      <div class="mobile-nav-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+      </div>
+      <span>Rituals</span>
+    </a>
+    <a href="#labSection" class="mobile-nav-item" data-section="labSection" id="mobileNavLab">
+      <div class="mobile-nav-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 3h12l-2 9H8L6 3z"/><path d="M4 21h16a1 1 0 0 0 1-1v-2a7 7 0 0 0-7-7h-4a7 7 0 0 0-7 7v2a1 1 0 0 0 1 1z"/></svg>
+      </div>
+      <span>Sanctum</span>
+    </a>
+    <a href="#clinicSection" class="mobile-nav-item" data-section="clinicSection" id="mobileNavClinic">
+      <div class="mobile-nav-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      </div>
+      <span>Sole Store</span>
+    </a>
+    <button class="mobile-nav-item mobile-cart-trigger" onclick="openCartDrawer()" aria-label="Open Apothecary Bag">
+      <div class="mobile-nav-icon mobile-bag-icon-wrapper">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 11V7a4 4 0 0 0-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+        <span class="mobile-bag-badge" id="mobileCartBadge">0</span>
+      </div>
+      <span>Bag</span>
+    </button>
+  </nav>
+
+  <!-- Gentle Mobile Install / Add-to-Home-Screen Pill -->
+  <div class="mobile-pwa-pill" id="mobilePwaPill">
+    <div class="mobile-pwa-pill-inner">
+      <img src="logo.jpg" alt="Pure Mantra App" class="mobile-pwa-pill-logo">
+      <div class="mobile-pwa-pill-text">
+        <strong>Install Pure Mantra App</strong>
+        <span id="pwaInstructionText">Instant access &amp; offline herbal apothecary</span>
+      </div>
+      <button class="mobile-pwa-pill-btn" id="btnPwaInstall" onclick="triggerPwaInstall()">Install</button>
+      <button class="mobile-pwa-pill-close" onclick="dismissPwaBanner()" aria-label="Dismiss">&times;</button>
     </div>
   </div>
 

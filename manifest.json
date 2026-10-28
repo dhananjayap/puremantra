@@ -1,0 +1,25 @@
+{
+  "name": "Pure Mantra Ayurvedic Cosmetology",
+  "short_name": "Pure Mantra",
+  "description": "100% Traditional Small-Batch Ayurvedic Cosmetology & Wellness. Handcrafted exclusively in Puthiyara, Kozhikode, Kerala.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#0E140C",
+  "theme_color": "#162013",
+  "categories": [
+    "lifestyle",
+    "shopping",
+    "health",
+    "beauty"
+  ],
+  "icons": [
+    {
+      "src": "logo.jpg",
+      "sizes": "192x192 512x512",
+      "type": "image/jpeg",
+      "purpose": "any maskable"
+    }
+  ]
+}

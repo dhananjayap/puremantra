@@ -300,6 +300,8 @@ document.addEventListener("DOMContentLoaded", () => {
   initMobileMenu();
   initBotanicalLab();
   initBowlScrollTransition();
+  initMobileBottomNav();
+  initPwaAndMobileApp();
 });
 
 // --- Product Rendering with 360-Degree Turn Interaction ---
@@ -329,11 +331,18 @@ function renderProducts() {
     <article class="product-card" data-id="${item.id}">
       <span class="product-card-badge ${item.badgeType}">${item.badge}</span>
       
-      <!-- 360-Degree Rotating Stage -->
-      <div class="product-media" onclick="openProductModal('${item.id}')" onmousemove="handleInteractiveSpin(event, this)" onmouseleave="resetInteractiveSpin(this)">
+      <!-- 360-Degree Rotating Stage (Desktop Mouse Hover & Mobile Touch Swipe) -->
+      <div class="product-media" 
+           onclick="openProductModal('${item.id}')" 
+           onmousemove="handleInteractiveSpin(event, this)" 
+           onmouseleave="resetInteractiveSpin(this)"
+           ontouchstart="handleTouchSpinStart(event, this)"
+           ontouchmove="handleTouchSpinMove(event, this)"
+           ontouchend="handleTouchSpinEnd(this)">
         <div class="product-360-indicator">
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21.5 2v6h-6M2.5 22v-6h6M2 11.5a10 10 0 0 1 18.8-4.3M22 12.5a10 10 0 0 1-18.8 4.2"/></svg>
-          <span>360° Turn</span>
+          <span class="indicator-desktop">360° Turn</span>
+          <span class="indicator-mobile">👆 Swipe 360°</span>
         </div>
 
         <div class="product-360-turntable" id="turntable-${item.id}">
@@ -379,7 +388,7 @@ function renderProducts() {
   `).join("");
 }
 
-// --- Interactive 360 Spin on Mouse Hover & Move ---
+// --- Interactive 360 Spin on Mouse Hover & Move (Desktop) ---
 function handleInteractiveSpin(e, mediaBox) {
   const turntable = mediaBox.querySelector(".product-360-turntable");
   if (!turntable) return;
@@ -398,6 +407,48 @@ function resetInteractiveSpin(mediaBox) {
   if (!turntable) return;
   // Smoothly return or settle
   turntable.style.transform = "rotateY(0deg)";
+}
+
+// --- Touch-Driven 360 Spin on Swipe (Android & iOS Mobile) ---
+let touchStartCoords = { x: 0, y: 0 };
+let isProductTouchActive = false;
+
+function handleTouchSpinStart(e, mediaBox) {
+  if (!e.touches || e.touches.length === 0) return;
+  touchStartCoords.x = e.touches[0].clientX;
+  touchStartCoords.y = e.touches[0].clientY;
+  isProductTouchActive = true;
+  const turntable = mediaBox.querySelector(".product-360-turntable");
+  if (turntable) {
+    turntable.style.transition = "none";
+  }
+}
+
+function handleTouchSpinMove(e, mediaBox) {
+  if (!isProductTouchActive || !e.touches || e.touches.length === 0) return;
+  const touch = e.touches[0];
+  const deltaX = touch.clientX - touchStartCoords.x;
+  const deltaY = touch.clientY - touchStartCoords.y;
+
+  // If user is clearly swiping horizontally on the product turntable
+  if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > 8) {
+    const rect = mediaBox.getBoundingClientRect();
+    const percentage = Math.max(0, Math.min(1, (touch.clientX - rect.left) / rect.width));
+    const degrees = Math.round(percentage * 360);
+    const turntable = mediaBox.querySelector(".product-360-turntable");
+    if (turntable) {
+      turntable.style.transform = `rotateY(${degrees}deg)`;
+    }
+  }
+}
+
+function handleTouchSpinEnd(mediaBox) {
+  isProductTouchActive = false;
+  const turntable = mediaBox.querySelector(".product-360-turntable");
+  if (turntable) {
+    turntable.style.transition = "transform 0.5s cubic-bezier(0.16, 1, 0.3, 1)";
+    turntable.style.transform = "rotateY(0deg)";
+  }
 }
 
 // --- Interactive Size Selection ---
@@ -510,10 +561,17 @@ function saveCart() {
 
 function updateCartUI() {
   const countBadge = document.getElementById("cartCountBadge");
+  const mobileCountBadge = document.getElementById("mobileCartBadge");
   const totalCount = cart.reduce((sum, item) => sum + item.qty, 0);
+  
   if (countBadge) {
     countBadge.textContent = totalCount;
     countBadge.style.display = totalCount > 0 ? "flex" : "none";
+  }
+
+  if (mobileCountBadge) {
+    mobileCountBadge.textContent = totalCount;
+    mobileCountBadge.style.display = totalCount > 0 ? "flex" : "none";
   }
 
   const itemsContainer = document.getElementById("cartItemsContainer");
@@ -1601,4 +1659,121 @@ function initBowlScrollTransition() {
   window.addEventListener("scroll", onScroll, { passive: true });
   window.addEventListener("resize", onScroll, { passive: true });
   updateVesselPosition();
+}
+
+// ===================================================================
+// MOBILE APP NAVIGATION & ACTIVE TAB TRACKING (ANDROID & iOS)
+// ===================================================================
+function initMobileBottomNav() {
+  const navItems = document.querySelectorAll(".mobile-bottom-nav .mobile-nav-item[data-section]");
+  if (navItems.length === 0) return;
+
+  const sections = ["heroSection", "shopSection", "labSection", "clinicSection"];
+  
+  function updateActiveMobileNav() {
+    const scrollPos = window.scrollY + 200;
+    let currentActive = "heroSection";
+
+    sections.forEach(secId => {
+      const el = document.getElementById(secId);
+      if (el) {
+        const top = el.offsetTop;
+        const height = el.offsetHeight;
+        if (scrollPos >= top && scrollPos < top + height) {
+          currentActive = secId;
+        }
+      }
+    });
+
+    navItems.forEach(item => {
+      const targetSec = item.getAttribute("data-section");
+      if (targetSec === currentActive) {
+        item.classList.add("active");
+      } else {
+        item.classList.remove("active");
+      }
+    });
+  }
+
+  window.addEventListener("scroll", updateActiveMobileNav, { passive: true });
+  updateActiveMobileNav();
+}
+
+// ===================================================================
+// PWA & NATIVE MOBILE APP INSTALLATION PROMPT (ANDROID & iOS)
+// ===================================================================
+let deferredPwaPrompt = null;
+
+function initPwaAndMobileApp() {
+  // Register Service Worker for offline capability & mobile caching
+  if ("serviceWorker" in navigator) {
+    window.addEventListener("load", () => {
+      navigator.serviceWorker.register("./sw.js").catch(err => {
+        console.warn("Service worker registration:", err);
+      });
+    });
+  }
+
+  const pwaPill = document.getElementById("mobilePwaPill");
+  if (!pwaPill) return;
+
+  // Check if dismissed before in sessionStorage
+  if (sessionStorage.getItem("pure_mantra_pwa_dismissed")) {
+    return;
+  }
+
+  // Detect iOS Safari
+  const isIos = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+  const isStandalone = window.navigator.standalone === true || window.matchMedia("(display-mode: standalone)").matches;
+
+  if (isStandalone) {
+    // Already running as standalone installed app
+    return;
+  }
+
+  // Android Chrome: Capture beforeinstallprompt event
+  window.addEventListener("beforeinstallprompt", (e) => {
+    e.preventDefault();
+    deferredPwaPrompt = e;
+    setTimeout(() => {
+      pwaPill.classList.add("show");
+    }, 2500);
+  });
+
+  // iOS Safari: Show guide to "Add to Home Screen"
+  if (isIos && !isStandalone) {
+    const instructionText = document.getElementById("pwaInstructionText");
+    const installBtn = document.getElementById("btnPwaInstall");
+    if (instructionText) instructionText.textContent = "Tap Share ⎋ & 'Add to Home Screen' ➕";
+    if (installBtn) {
+      installBtn.textContent = "How to Install";
+      installBtn.onclick = () => {
+        alert("To install Pure Mantra on iOS:\n1. Tap the Share button (square with arrow ⎋) at the bottom of Safari.\n2. Scroll down and tap 'Add to Home Screen' ➕.\n3. Tap 'Add' to launch full-screen from your Home Screen.");
+      };
+    }
+    setTimeout(() => {
+      pwaPill.classList.add("show");
+    }, 3500);
+  }
+}
+
+function triggerPwaInstall() {
+  if (deferredPwaPrompt) {
+    deferredPwaPrompt.prompt();
+    deferredPwaPrompt.userChoice.then((choiceResult) => {
+      if (choiceResult.outcome === "accepted") {
+        showToast("Pure Mantra installed to Home Screen!");
+      }
+      deferredPwaPrompt = null;
+      dismissPwaBanner();
+    });
+  }
+}
+
+function dismissPwaBanner() {
+  const pwaPill = document.getElementById("mobilePwaPill");
+  if (pwaPill) {
+    pwaPill.classList.remove("show");
+    sessionStorage.setItem("pure_mantra_pwa_dismissed", "true");
+  }
 }
